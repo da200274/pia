@@ -1,0 +1,44 @@
+<body>
+    <main>
+        <!-- Section -->
+        <section class="min-vh-100 d-flex align-items-center">
+            <div class="container">
+                <div class="row justify-content-center">
+                    <div class="col-12 col-md-8 col-lg-6 justify-content-center">
+                        <br>
+                        <div class="card bg-secondary shadow-soft border-light p-4">
+                            <div class="text-center pb-0">
+                                <h2 class="mb-0 h4">Korisnici</h2>                               
+                            </div>
+                            <div class="card-body text-center">
+                                <table>
+                                    <thead>
+                                        <tr>
+                                            <th>Profil</th>
+                                            <th>Korisničko ime</th>
+                                            <th>Tip</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr *ngFor="let korisnik of korisnici">
+                                            <td>
+                                                <div class="profile-image-small">
+                                                    <img [src]="'assets/profile_pics/' + korisnik.profilna" alt="Image Description">
+                                                </div>
+                                            </td>
+                                            <td>{{korisnik.korime}}</td>
+                                            <td>{{korisnik.tip}}</td>
+                                            <td>
+                                                <button (click)="show_more(korisnik.korime)" class="btn btn-block btn-info">Više</button>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+</body>

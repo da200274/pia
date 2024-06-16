@@ -1,0 +1,17 @@
+.black-text{
+    color: black
+}
+
+body {
+    background-image: url('../../../assets/forms_background/bc2.png');
+    background-size: cover; /* Ensures the image covers the entire background */
+    background-position: center; /* Centers the image */
+    background-repeat: no-repeat; /* Prevents the image from repeating */
+ }
+
+.divider{
+    width:5px;
+    height:auto;
+    display:inline-block;
+}
+  

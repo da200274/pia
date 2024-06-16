@@ -1,0 +1,50 @@
+<body>
+    <main>
+        <!-- Section -->
+        <section class="min-vh-100 d-flex align-items-center">
+            <div class="container">
+                <div class="row justify-content-center">
+                    <div class="col-12 col-md-8 col-lg-6 justify-content-center">
+                        <br>
+                        <div class="card bg-secondary shadow-soft border-light p-4">
+                            <div class="text-center pb-0">
+                                <h2 class="mb-0 h4">Zahtevi za registraciju</h2>                               
+                            </div>
+                            <div class="card-body text-center">
+                                <table>
+                                    <thead>
+                                        <tr>
+                                            <th>Profil</th>
+                                            <th>Korisničko ime</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr *ngFor="let zahtev of zahtevi">
+                                            <td>
+                                                <div class="profile-image-small">
+                                                    <img [src]="'assets/profile_pics/' + zahtev.profilna" alt="Image Description">
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <a (click)="show_more(zahtev.korime)">
+                                                    {{zahtev.korime}}
+                                                </a>
+                                            </td>
+                                            <td>
+                                                <div>
+                                                    <button (click)="accept(zahtev.korime)" class="btn btn-block btn-success">Prihvati</button>
+                                                    <div class="divider bg-secondary"></div>
+                                                    <button (click)="reject(zahtev.korime)" class="btn btn-block btn-danger">Odbij</button>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+</body>

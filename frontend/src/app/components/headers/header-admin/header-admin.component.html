@@ -1,0 +1,33 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark static-top">
+    <div class="container">
+      <a class="navbar-brand" href="">
+        <img src="../../../../assets/home_picture/header_logo.png" alt="..." height="36">Portal
+      </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item">
+            <a class="nav-link" href="">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" (click)="show_users()">Korisnici</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" (click)="show_requests()">Zahtevi</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Dodaj konobara</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Dodaj restoran</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" (click)="logout()">Log out</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
