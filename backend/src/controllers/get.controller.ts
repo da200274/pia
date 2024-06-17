@@ -1,5 +1,6 @@
 import express from 'express'
 import KorisnikM from '../models/korisnik';
+import RestoranM from '../models/restoran'
 
 export class GetController{
 
@@ -23,6 +24,23 @@ export class GetController{
         let korime = req.body.korime
         KorisnikM.findOne({korime: korime}).then((user)=>{
             res.json(user)
+        }).catch((err)=>{
+            console.log(err)
+        })
+    }
+
+    all_restaurants = (req: express.Request, res: express.Response)=>{
+        RestoranM.find().then((rs)=>{
+            res.json(rs)
+        }).catch((err)=>{
+            console.log(err)
+        })
+    }
+
+    get_restaurant = (req: express.Request, res: express.Response)=>{
+        let nazivP = req.body.naziv
+        RestoranM.findOne({naziv: nazivP}).then((r)=>{
+            res.json(r)
         }).catch((err)=>{
             console.log(err)
         })

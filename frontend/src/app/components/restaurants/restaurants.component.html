@@ -1,0 +1,42 @@
+<body>
+    <main>
+        <!-- Hero -->
+        <div class="section section-header pb-7">
+            <div class="container">
+                <div class="row justify-content-center">
+                    <div class="col-12 col-lg-8 text-center">
+                        <h1 class="display-2 mb-4">Naši restorani</h1>
+                    </div>
+                </div>
+            </div>        
+        </div>
+        <section class="section section-lg pt-0">
+            <div class="container">
+                <div class="row">
+                    <div class="col">
+                        <div class="card bg-secondary shadow-soft border-light p-4">
+                            <div class="row">
+                                <table>
+                                    <thead>
+                                        <tr>
+                                            <th>Naziv</th>
+                                            <th>Tip</th>
+                                            <th>Adresa</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr *ngFor="let r of restorani">
+                                            <td (click)="goto_restaurant(r.naziv)">{{r.naziv}}</td>
+                                            <td>{{r.tip}}</td>
+                                            <td>{{r.adresa}}</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+</body>

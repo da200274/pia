@@ -29,4 +29,8 @@ export class HeaderCustomerComponent implements OnInit{
   goto_change(){
     this.router.navigate(['change_password'])
   }
+
+  goto_restaurant(){
+    this.router.navigate(['restaurants'])
+  }
 }

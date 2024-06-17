@@ -19,6 +19,8 @@ import { AdminListsComponent } from './components/admin/admin-lists/admin-lists.
 import { AdminRequestsComponent } from './components/admin/admin-requests/admin-requests.component';
 import { ProfilComponent } from './components/profil/profil.component';
 import { ChangePasswordComponent } from './components/change-password/change-password.component';
+import { RestaurantsComponent } from './components/restaurants/restaurants.component';
+import { RestaurantComponent } from './components/restaurant/restaurant.component';
 
 @NgModule({
   declarations: [
@@ -37,7 +39,9 @@ import { ChangePasswordComponent } from './components/change-password/change-pas
     AdminListsComponent,
     AdminRequestsComponent,
     ProfilComponent,
-    ChangePasswordComponent
+    ChangePasswordComponent,
+    RestaurantsComponent,
+    RestaurantComponent
   ],
   imports: [
     BrowserModule,

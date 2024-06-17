@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Korisnik } from '../models/korisnik';
+import { Restoran } from '../models/restoran';
 
 @Injectable({
   providedIn: 'root'
@@ -23,5 +24,16 @@ export class FetchService {
       korime: korime
     }
     return this.http.post<Korisnik>(`${this.backendUrl}/get/user_by_korime`, data);
+  }
+
+  all_restaurants(){
+    return this.http.post<Restoran[]>(`${this.backendUrl}/get/all_restaurants`, " ");
+  }
+
+  get_restaurant(nazivP: string){
+    const data = {
+      naziv: nazivP
+    }
+    return this.http.post<Restoran>(`${this.backendUrl}/get/get_restaurant`, data);
   }
 }

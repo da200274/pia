@@ -8,6 +8,9 @@ import { AdminLoginComponent } from './components/admin/admin-login/admin-login.
 import { AdminListsComponent } from './components/admin/admin-lists/admin-lists.component';
 import { AdminRequestsComponent } from './components/admin/admin-requests/admin-requests.component';
 import { ProfilComponent } from './components/profil/profil.component';
+import { RestaurantsComponent } from './components/restaurants/restaurants.component';
+import { RestaurantComponent } from './components/restaurant/restaurant.component';
+import { ChangePasswordComponent } from './components/change-password/change-password.component';
 
 const routes: Routes = [
   {path:"", component:HomeComponent},
@@ -17,7 +20,10 @@ const routes: Routes = [
   {path:"login_admin", component:AdminLoginComponent},
   {path:"lists_admin", component:AdminListsComponent},
   {path:"requests_admin", component:AdminRequestsComponent},
-  {path:"profil", component:ProfilComponent}
+  {path:"profil", component:ProfilComponent},
+  {path:"restaurants", component:RestaurantsComponent},
+  {path:"restaurant", component:RestaurantComponent},
+  {path:"change_password", component:ChangePasswordComponent}
 ];
 
 @NgModule({

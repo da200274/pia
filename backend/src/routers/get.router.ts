@@ -15,4 +15,12 @@ getRouter.route("/user_by_korime").post(
     (req,res)=>new GetController().user_by_korime(req,res)
 )
 
+getRouter.route("/all_restaurants").post(
+    (req,res)=>new GetController().all_restaurants(req,res)
+)
+
+getRouter.route("/get_restaurant").post(
+    (req,res)=>new GetController().get_restaurant(req,res)
+)
+
 export default getRouter;
