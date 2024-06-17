@@ -29,4 +29,14 @@ export class UpdateController{
             console.log(err)
         })
     }
+
+    change_password = (req: express.Request, res: express.Response)=>{
+        let korimeP = req.body.korime
+        let lozinkaP = req.body.lozinka
+        KorisnikM.updateOne({korime: korimeP}, {lozinka: lozinkaP}).then((ok)=>{
+            res.json({poruka: "ok"})
+        }).catch((err)=>{
+            console.log(err)
+        })
+    }
 }

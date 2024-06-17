@@ -31,7 +31,7 @@ export class LoginComponent {
   }
 
   password_forgotten(){
-
+    this.router.navigate(['change_password'])
   }
 
   register_page(){

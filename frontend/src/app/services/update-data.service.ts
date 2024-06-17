@@ -30,4 +30,12 @@ export class UpdateDataService {
     }
     return this.http.post<Poruka>(`${this.backendUrl}/update/ban`, data);
   }
+
+  change_password(korime: string, lozinka: string){
+    const data = {
+      korime: korime,
+      lozinka: lozinka
+    }
+    return this.http.post<Poruka>(`${this.backendUrl}/update/change_password`, data);
+  }
 }
