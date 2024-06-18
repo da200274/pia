@@ -25,7 +25,7 @@ export class AdminRequestsComponent implements OnInit{
   }
 
   accept(korime: string){
-    this.updateDataServis.accept(korime).subscribe(
+    this.updateDataServis.accept_user(korime).subscribe(
       data=>{
         if(data.poruka != "ok"){
           console.log("Neuspešno prihvatanje korisnika.")
@@ -37,7 +37,7 @@ export class AdminRequestsComponent implements OnInit{
   }
 
   reject(korime: string){
-    this.updateDataServis.reject(korime).subscribe(
+    this.updateDataServis.reject_user(korime).subscribe(
       data=>{
         if(data.poruka != "ok"){
           console.log("Neuspešno odbijanje korisnika.")

@@ -11,7 +11,10 @@ export class FetchWaiterService {
 
   backendUrl = "http://localhost:4000"
 
-  get_orders(){
-    return this.http.post<Porudzbina[]>(`${this.backendUrl}/get_waiter/active_orders`, " ");
+  get_orders(radi_u: string){
+    const data = {
+      radi_u: radi_u
+    }
+    return this.http.post<Porudzbina[]>(`${this.backendUrl}/get_waiter/active_orders`, data);
   }
 }

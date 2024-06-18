@@ -63,12 +63,33 @@
                                     <div class="form-group">
                                         <p>Cena: {{porudzbina.cena}}</p>
                                     </div>
-                                    <div class="form-group text-center fw-bold">Za spremanje:</div>
-                                    <div class="form-group text-center" *ngFor="let k of porudzbina.sadrzaj">
-                                        {{k.naziv}}
+                                    <div class="row">
+                                        <div class="form-group text-center fw-bold">Za spremanje:</div>
+                                        <table class="table table-striped">
+                                            <thead class="thead-dark">
+                                              <tr>
+                                                <th>Jelo</th>
+                                                <th>Količina</th>
+                                              </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr *ngFor="let k of porudzbina.sadrzaj">
+                                                    <td>{{k.naziv}}</td>
+                                                    <td>{{k.kolicina}}</td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                    <div class="form-group">
+                                        <input type="radio" [(ngModel)]="vreme_dostave" id="dugme1" name="dostava" value="25">20-30min
+                                        <input type="radio" [(ngModel)]="vreme_dostave" id="dugme2" name="dostava" value="35">30-40min
+                                        <input type="radio" [(ngModel)]="vreme_dostave" id="dugme3" name="dostava" value="55">50-60min
                                     </div>
                                 </div>
                                 <br>
+                                <div class="alert alert-info text-center" role="alert" *ngIf="message != ''">
+                                    {{message}}
+                                </div>
                                 <div class="text-center">
                                     <button class="btn btn-block btn-info" (click)="prihvati()">
                                         Prihvati

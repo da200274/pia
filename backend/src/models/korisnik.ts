@@ -15,7 +15,8 @@ const korisnikSchema = new mongoose.Schema(
         tip: String,
         kartica: String,
         status: Number,
-        profilna: String
+        profilna: String,
+        radi_u: String
     },{
       versionKey:false  
     }

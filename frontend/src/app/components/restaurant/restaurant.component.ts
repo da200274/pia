@@ -73,7 +73,8 @@ export class RestaurantComponent implements OnInit{
     this.porudzbina.naziv = this.restoran.naziv
     this.porudzbina.status = 0
     this.izracunaj_cenu();
-    this.insertServis.add_order(this.porudzbina).subscribe(
+    const data = this.porudzbina.excludeId()
+    this.insertServis.add_order(data).subscribe(
       msg=>{
         if(msg.poruka == "ok"){
           this.router.navigate(['restaurants'])

@@ -10,18 +10,18 @@ export class UpdateDataService {
   constructor(private http: HttpClient) { }
 
   backendUrl = "http://localhost:4000"
-  accept(korime: string){
+  accept_user(korime: string){
     const data = {
       korime: korime
     }
-    return this.http.post<Poruka>(`${this.backendUrl}/update/accept`, data);
+    return this.http.post<Poruka>(`${this.backendUrl}/update/accept_user`, data);
   }
 
-  reject(korime: string){
+  reject_user(korime: string){
     const data = {
       korime: korime
     }
-    return this.http.post<Poruka>(`${this.backendUrl}/update/reject`, data);
+    return this.http.post<Poruka>(`${this.backendUrl}/update/reject_user`, data);
   }
 
   ban(korime: string){
@@ -37,5 +37,22 @@ export class UpdateDataService {
       lozinka: lozinka
     }
     return this.http.post<Poruka>(`${this.backendUrl}/update/change_password`, data);
+  }
+
+  accept_order(korime: string, _id: string, vreme_dostave: number){
+    
+    const data = {
+      korime: korime,
+      id: _id,
+      vreme_dostave: vreme_dostave
+    }
+    return this.http.post<Poruka>(`${this.backendUrl}/update/accept_offer`, data);
+  }
+
+  reject_order(_id: string){
+    const data = {
+      id: _id
+    }
+    return this.http.post<Poruka>(`${this.backendUrl}/update/reject_offer`, data);
   }
 }

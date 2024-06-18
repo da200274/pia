@@ -17,10 +17,11 @@ const porudzbinaSchema = new mongoose.Schema(
         kontakt: String,
         cena: Number,
         status: Number,
-        vreme_dostave: String,
+        vreme_dostave: Number,
         sadrzaj: [sadrzajSchema]
     },{
-        versionKey:false  
+        versionKey:false,
+        timestamps: { createdAt: 'kreirana_u', updatedAt: 'azurirana_u' }
     }
 );
 

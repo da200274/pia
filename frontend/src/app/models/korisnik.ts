@@ -12,5 +12,6 @@ export class Korisnik{
     status: number = 0;
     profilna: string = "";
     kartica: string = ""
-    tip: string = ""
+    tip: string = "";
+    radi_u: string = ""
 }

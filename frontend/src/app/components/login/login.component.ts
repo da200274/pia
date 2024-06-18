@@ -24,7 +24,7 @@ export class LoginComponent {
         else{
           localStorage.setItem("tip", data.tip);
           localStorage.setItem("korisnik", JSON.stringify(data))
-          this.router.navigate([data.tip])
+          this.router.navigate(['profil'])
         }
       }
     )
