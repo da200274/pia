@@ -1,0 +1,88 @@
+<body>
+    <main>
+        <!-- Section -->
+        <section class="min-vh-100 d-flex align-items-center">
+            <div class="container">
+                <div class="row justify-content-center">
+                    <!-- Left Section -->
+                    <div class="col-12 col-md-6 col-lg-6">
+                        <section class="section section-lg pt-0">
+                            <div class="container">
+                                <div class="row">
+                                    <div class="col">
+                                        <div class="card bg-secondary shadow-soft border-light p-4">
+                                            <div class="text-center pb-0">
+                                                <h2 class="mb-0 h5">Porudžbine</h2>
+                                            </div>
+                                            <br>
+                                            <div class="row">
+                                                <table class="table table-striped">
+                                                    <thead class="thead-dark">
+                                                      <tr>
+                                                        <th>Korisnik</th>
+                                                        <th>Cena</th>
+                                                        <th>Više</th>
+                                                      </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                        <tr *ngFor="let s of porudzbine">
+                                                            <td>{{s.kupac}}</td>
+                                                            <td>{{s.cena}}</td>
+                                                            <td>
+                                                                <button type="button" class="btn btn-warning" (click)="prikazi(s)">
+                                                                    &#43; <!-- Unicode for minus sign -->
+                                                                </button>
+                                                            </td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </section>
+                    </div>
+                    <!--Right Section-->
+                    <div class="col-12 col-md-6 col-lg-6">
+                        <div class="card bg-secondary shadow-soft border-light p-4">
+                            <div class="text-center pb-0">
+                                <h2 class="mb-0 h5">Porudžbina</h2>                               
+                            </div>
+                            <div class="card-body text-center" *ngIf="pokazan == true">
+                                <div class="form-group">
+                                    <div class="form-group">
+                                        <p>Korisničko ime: {{porudzbina.kupac}}</p>
+                                    </div>
+                                    <div class="form-group">
+                                        <p>Adresa: {{porudzbina.adresa}}</p>
+                                    </div>
+                                    <div class="form-group">
+                                        <p>Kontakt: {{porudzbina.kontakt}}</p>
+                                    </div>
+                                    <div class="form-group">
+                                        <p>Cena: {{porudzbina.cena}}</p>
+                                    </div>
+                                    <div class="form-group text-center fw-bold">Za spremanje:</div>
+                                    <div class="form-group text-center" *ngFor="let k of porudzbina.sadrzaj">
+                                        {{k.naziv}}
+                                    </div>
+                                </div>
+                                <br>
+                                <div class="text-center">
+                                    <button class="btn btn-block btn-info" (click)="prihvati()">
+                                        Prihvati
+                                    </button>
+                                    <div class="divider bg-secondary"></div>
+                                    <button class="btn btn-block btn-warning" (click)="odbij()">
+                                        Odbij
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+</body>

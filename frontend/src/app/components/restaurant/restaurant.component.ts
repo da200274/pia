@@ -71,6 +71,7 @@ export class RestaurantComponent implements OnInit{
     this.porudzbina.kontakt = this.korisnik.kontakt
     this.porudzbina.kupac = this.korisnik.korime
     this.porudzbina.naziv = this.restoran.naziv
+    this.porudzbina.status = 0
     this.izracunaj_cenu();
     this.insertServis.add_order(this.porudzbina).subscribe(
       msg=>{

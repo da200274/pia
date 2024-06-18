@@ -20,7 +20,7 @@ export class AppComponent {
         return HeaderAdminComponent;
       case 'musterija':
         return HeaderCustomerComponent;
-      case 'konobar':
+      case 'waiter':
         return HeaderWaiterComponent
       default:
         return HeaderVisitorComponent;

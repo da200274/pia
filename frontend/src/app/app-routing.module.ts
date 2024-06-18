@@ -11,6 +11,7 @@ import { ProfilComponent } from './components/profil/profil.component';
 import { RestaurantsComponent } from './components/restaurants/restaurants.component';
 import { RestaurantComponent } from './components/restaurant/restaurant.component';
 import { ChangePasswordComponent } from './components/change-password/change-password.component';
+import { WaiterOrderComponent } from './components/waiter/waiter-order/waiter-order.component';
 
 const routes: Routes = [
   {path:"", component:HomeComponent},
@@ -23,7 +24,8 @@ const routes: Routes = [
   {path:"profil", component:ProfilComponent},
   {path:"restaurants", component:RestaurantsComponent},
   {path:"restaurant", component:RestaurantComponent},
-  {path:"change_password", component:ChangePasswordComponent}
+  {path:"change_password", component:ChangePasswordComponent},
+  {path:"waiter_orders", component:WaiterOrderComponent}
 ];
 
 @NgModule({

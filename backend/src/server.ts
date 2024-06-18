@@ -6,6 +6,7 @@ import registerRouter from './routers/register.router';
 import getRouter from './routers/get.router';
 import updateRouter from './routers/update.router';
 import insertRouter from './routers/insert.router';
+import getWaiterRouter from './routers/get_waiter.router';
 
 const app = express();
 
@@ -22,6 +23,7 @@ const router = express.Router()
 router.use('/login', loginRouter)
 router.use('/register', registerRouter)
 router.use('/get', getRouter)
+router.use('/get_waiter', getWaiterRouter)
 router.use('/update', updateRouter)
 router.use('/insert', insertRouter)
 

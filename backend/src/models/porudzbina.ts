@@ -16,6 +16,8 @@ const porudzbinaSchema = new mongoose.Schema(
         adresa: String,
         kontakt: String,
         cena: Number,
+        status: Number,
+        vreme_dostave: String,
         sadrzaj: [sadrzajSchema]
     },{
         versionKey:false  

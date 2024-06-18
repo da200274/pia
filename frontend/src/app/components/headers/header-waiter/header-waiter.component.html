@@ -15,22 +15,22 @@
             <a class="nav-link" href="">Home</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="/profil">Profil</a>
+            <a class="nav-link" (click)="goto_profil()">Profil</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="#">Rezervacije</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">Dostave</a>
+            <a class="nav-link" (click)="goto_dostave()">Dostave</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="#">Statistika</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" (click)="logout">Log out</a>
+            <a class="nav-link" (click)="logout()">Log out</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="/change_password">Zaboravljena lozinka?</a>
+            <a class="nav-link" (click)="goto_change()">Zaboravljena lozinka?</a>
           </li>
         </ul>
       </div>

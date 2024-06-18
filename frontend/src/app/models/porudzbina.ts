@@ -6,6 +6,8 @@ export class Porudzbina{
     konobar: string = "";
     adresa: string = "";
     kontakt: string = "";
-    cena: number = 0
+    cena: number = 0;
+    status: number = 0;
+    vreme_dostave: string = ""
     sadrzaj: Sadrzaj[] = []
 }
