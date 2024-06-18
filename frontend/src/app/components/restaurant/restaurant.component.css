@@ -1,0 +1,6 @@
+.profile-image-small img {
+    width: 80px; /* Set the desired width */
+    height: 80px; /* Set the desired height */
+    object-fit: cover; /* Ensure the image covers the entire area without distortion */
+    border-radius: 60%; /* Optional: Make the image round */
+}

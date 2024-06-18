@@ -4,8 +4,8 @@
         <section class="min-vh-100 d-flex align-items-center">
             <div class="container">
                 <div class="row justify-content-center">
-                    <div class="col-12 col-md-8 col-lg-6 justify-content-center">
-                        <br>
+                    <!-- Left Section -->
+                    <div class="col-12 col-md-6 col-lg-6">
                         <div class="card bg-secondary shadow-soft border-light p-4">
                             <div class="text-center pb-0">
                                 <h2 class="mb-0 h5">Profil</h2>                               
@@ -37,6 +37,100 @@
                                 </div>
                             </div>
                         </div>
+                    </div>
+                    <!-- Right Section -->
+                    <div class="col-12 col-md-6 col-lg-6">
+                        <section class="section section-lg pt-0">
+                            <div class="container">
+                                <div class="row">
+                                    <div class="col">
+                                        <div class="card bg-secondary shadow-soft border-light p-4">
+                                            <div class="text-center pb-0">
+                                                <h2 class="mb-0 h5">Korpa</h2>
+                                            </div>
+                                            <br>
+                                            <div class="row">
+                                                <table class="table table-striped">
+                                                    <thead class="thead-dark">
+                                                      <tr>
+                                                        <th>Naziv</th>
+                                                        <th>Cena</th>
+                                                        <th>Kolicina</th>
+                                                        <th></th>
+                                                        <th></th>
+                                                      </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                        <tr *ngFor="let s of porudzbina.sadrzaj">
+                                                            <td>{{s.naziv}}</td>
+                                                            <td>{{s.cena}}</td>
+                                                            <td>{{s.kolicina}}</td>
+                                                            <td>
+                                                                <button type="button" class="btn btn-warning" (click)="oduzmi(s.naziv)">
+                                                                    &#8722; <!-- Unicode for minus sign -->
+                                                                </button>
+                                                            </td>
+                                                            <td>
+                                                                <button type="button" class="btn btn-danger" (click)="obrisi(s.naziv)">
+                                                                    &#215; <!-- Unicode for multiplication sign (X) -->
+                                                                </button>
+                                                            </td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                                <button class="btn btn-info" (click)="poruci()">
+                                                    Naruči
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </section>
+                        <section class="section section-lg pt-0">
+                            <div class="container">
+                                <div class="row">
+                                    <div class="col">
+                                        <div class="card bg-secondary shadow-soft border-light p-4">
+                                            <div class="text-center pb-0">
+                                                <h2 class="mb-0 h5">Jelovnik</h2>
+                                            </div>
+                                            <br>
+                                            <div class="row">
+                                                <table class="table table-striped">
+                                                    <thead class="thead-dark">
+                                                      <tr>
+                                                        <th>Naziv</th>
+                                                        <th>Cena</th>
+                                                        <th>Sastojci</th>
+                                                        <th>Slika</th>
+                                                        <th>Dodaj</th>
+                                                      </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                        <tr *ngFor="let j of restoran.meni">
+                                                            <td>{{j.naziv}}</td>
+                                                            <td>{{j.cena}}</td>
+                                                            <td>{{j.sastojci}}</td>
+                                                            <td>
+                                                                <div class="profile-image-small">
+                                                                    <img [src]="'assets/menu_pics/' + j.slika" alt="Image Description">
+                                                                </div>
+                                                            </td>
+                                                            <td>
+                                                                <button type="button" class="btn btn-info" (click)="dodaj(j)">
+                                                                    &#43; <!-- Unicode for plus sign -->
+                                                                </button>
+                                                            </td>
+                                                        </tr>
+                                                    </tbody>
+                                                  </table>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </section>
                     </div>
                 </div>
             </div>

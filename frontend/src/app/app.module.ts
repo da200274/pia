@@ -21,6 +21,7 @@ import { ProfilComponent } from './components/profil/profil.component';
 import { ChangePasswordComponent } from './components/change-password/change-password.component';
 import { RestaurantsComponent } from './components/restaurants/restaurants.component';
 import { RestaurantComponent } from './components/restaurant/restaurant.component';
+import { WaiterComponent } from './waiter/waiter.component';
 
 @NgModule({
   declarations: [
@@ -41,7 +42,8 @@ import { RestaurantComponent } from './components/restaurant/restaurant.componen
     ProfilComponent,
     ChangePasswordComponent,
     RestaurantsComponent,
-    RestaurantComponent
+    RestaurantComponent,
+    WaiterComponent
   ],
   imports: [
     BrowserModule,
