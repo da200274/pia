@@ -33,4 +33,8 @@ export class HeaderCustomerComponent implements OnInit{
   goto_restaurant(){
     this.router.navigate(['restaurants'])
   }
+
+  goto_dostava(){
+    this.router.navigate(['delivery_customer'])
+  }
 }

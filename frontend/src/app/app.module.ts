@@ -13,7 +13,6 @@ import { RegisterComponent } from './components/register/register.component';
 import { HeaderWaiterComponent } from './components/headers/header-waiter/header-waiter.component';
 import { HeaderAdminComponent } from './components/headers/header-admin/header-admin.component';
 import { FooterComponent } from './components/footer/footer.component';
-import { CustomerComponent } from './components/customer/customer.component';
 import { AdminLoginComponent } from './components/admin/admin-login/admin-login.component';
 import { AdminListsComponent } from './components/admin/admin-lists/admin-lists.component';
 import { AdminRequestsComponent } from './components/admin/admin-requests/admin-requests.component';
@@ -22,6 +21,9 @@ import { ChangePasswordComponent } from './components/change-password/change-pas
 import { RestaurantsComponent } from './components/restaurants/restaurants.component';
 import { RestaurantComponent } from './components/restaurant/restaurant.component';
 import { WaiterOrderComponent } from './components/waiter/waiter-order/waiter-order.component';
+import { DeliveryCustomerComponent } from './components/customer/delivery-customer/delivery-customer.component';
+import { AddWaiterComponent } from './components/admin/add-waiter/add-waiter.component';
+import { AddRestaurantComponent } from './components/admin/add-restaurant/add-restaurant.component';
 
 @NgModule({
   declarations: [
@@ -34,8 +36,6 @@ import { WaiterOrderComponent } from './components/waiter/waiter-order/waiter-or
     HeaderWaiterComponent,
     HeaderAdminComponent,
     FooterComponent,
-    CustomerComponent,
-    CustomerComponent,
     AdminLoginComponent,
     AdminListsComponent,
     AdminRequestsComponent,
@@ -43,7 +43,10 @@ import { WaiterOrderComponent } from './components/waiter/waiter-order/waiter-or
     ChangePasswordComponent,
     RestaurantsComponent,
     RestaurantComponent,
-    WaiterOrderComponent
+    WaiterOrderComponent,
+    DeliveryCustomerComponent,
+    AddWaiterComponent,
+    AddRestaurantComponent
   ],
   imports: [
     BrowserModule,

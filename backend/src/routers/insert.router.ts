@@ -7,6 +7,11 @@ insertRouter.route("/order").post(
     (req,res)=>new InsertController().add_order(req,res)
 )
 
+insertRouter.route("/restaurant").post(
+    (req,res)=>new InsertController().add_restaurant(req,res)
+)
+
+
 
 
 export default insertRouter;

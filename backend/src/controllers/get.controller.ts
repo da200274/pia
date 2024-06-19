@@ -1,6 +1,7 @@
 import express from 'express'
 import KorisnikM from '../models/korisnik';
-import RestoranM from '../models/restoran'
+import RestoranM from '../models/restoran';
+import PorudzbinaM from '../models/porudzbina'
 
 export class GetController{
 
@@ -41,6 +42,26 @@ export class GetController{
         let nazivP = req.body.naziv
         RestoranM.findOne({naziv: nazivP}).then((r)=>{
             res.json(r)
+        }).catch((err)=>{
+            console.log(err)
+        })
+    }
+
+    get_active_orders = (req: express.Request, res: express.Response)=>{
+        let korime = req.body.korime
+        PorudzbinaM.find({kupac: korime, status: 1}).then((user)=>{
+            res.json(user)
+        }).catch((err)=>{
+            console.log(err)
+        })
+    }
+
+    archive = (req: express.Request, res: express.Response)=>{
+        let korime = req.body.korime
+        PorudzbinaM.find({kupac: korime, status: 2})
+        .sort({vreme_dostave : -1})
+        .then((user)=>{
+            res.json(user)
         }).catch((err)=>{
             console.log(err)
         })

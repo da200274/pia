@@ -22,4 +22,12 @@ export class HeaderAdminComponent {
   show_requests(){
     this.router.navigate(['requests_admin'])
   }
+
+  show_add_waiter(){
+    this.router.navigate(['add_waiter'])
+  }
+
+  show_add_restaurant(){
+    this.router.navigate(['add_restaurant'])
+  }
 }

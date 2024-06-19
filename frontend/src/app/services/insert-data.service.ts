@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Poruka } from '../models/poruka';
 import { Porudzbina } from '../models/porudzbina';
+import { Restoran } from '../models/restoran';
 
 @Injectable({
   providedIn: 'root'
@@ -15,5 +16,9 @@ export class InsertDataService {
       porudzbina: p
     }
     return this.http.post<Poruka>(`${this.backendUrl}/insert/order`, data);
+  }
+
+  add_restaurant(r: any){
+    return this.http.post<Poruka>(`${this.backendUrl}/insert/restaurant`, r);
   }
 }

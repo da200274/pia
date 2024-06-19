@@ -7,5 +7,4 @@ getWaiterRouter.route("/active_orders").post(
     (req,res)=>new GetWaiterController().active_orders(req,res)
 )
 
-
 export default getWaiterRouter;

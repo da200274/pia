@@ -23,4 +23,12 @@ getRouter.route("/get_restaurant").post(
     (req,res)=>new GetController().get_restaurant(req,res)
 )
 
+getRouter.route("/get_active_orders").post(
+    (req,res)=>new GetController().get_active_orders(req,res)
+)
+
+getRouter.route("/archive").post(
+    (req,res)=>new GetController().archive(req,res)
+)
+
 export default getRouter;

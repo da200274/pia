@@ -1,0 +1,16 @@
+.form-check-inline {
+    display: flex;
+    align-items: center;
+  }
+  
+  .mr-3 {
+    margin-right: 1rem;
+  }
+  
+  pre {
+    background: #f8f9fa;
+    padding: 1rem;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    text-align: left;
+  }
