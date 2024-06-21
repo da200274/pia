@@ -1,9 +1,10 @@
-import mongoose from 'mongoose'
+import mongoose, { mongo } from 'mongoose'
 
 const stoSchema = new mongoose.Schema(
     {
         sto_id: String,
-        kapacitet: Number
+        kapacitet: Number,
+        koordinate: [Number]
     }
 );
 
@@ -30,6 +31,19 @@ const recenzijaSchema = new mongoose.Schema(
     }
 );
 
+const kuhinjaSchema = new mongoose.Schema(
+    {
+        radno_vreme: String,
+        koordinate: [Number]
+    }
+);
+
+const toaletSchema = new mongoose.Schema(
+    {
+        koordinate: [Number]
+    }
+);
+
 const restoranSchema = new mongoose.Schema(
     {
         naziv: String,
@@ -39,6 +53,8 @@ const restoranSchema = new mongoose.Schema(
         mapa: String,
         kontakt: String,
         raspored_stolova: rasporedSchema,
+        kuhinja: kuhinjaSchema,
+        toalet: toaletSchema,
         meni: [meniSchema],
         recenzije: [recenzijaSchema]
     }

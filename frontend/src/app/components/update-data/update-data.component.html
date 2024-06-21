@@ -1,0 +1,114 @@
+<body>
+    <main>
+    <section class="min-vh-100 d-flex align-items-center">
+        <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-md-8 col-lg-6 justify-content-center">
+            <br>
+            <div class="card bg-warning shadow-soft p-4">
+                <div class="text-center pb-0">
+                <h2 class="mb-0 h5">Napravi nalog</h2>
+                </div>
+                <div class="card-body text-center">
+                <div class="form-group">
+                    <div class="form-group">
+                    <label for="korime">Korisničko ime: {{k.korime}}</label>
+                    <div class="d-inline-block ml-2">
+                        <input type="text" class="form-control" id="korime" [(ngModel)]="korime">
+                        <button class="btn btn-info" (click)="izmeni_korime()">Izmeni</button>
+                    </div>
+                    </div>
+                    <div class="form-group">
+                    <label for="mejl">Mejl: {{k.imejl}}</label>
+                    <div class="d-inline-block ml-2">
+                        <input type="text" class="form-control" id="imejl" [(ngModel)]="imejl">
+                        <button class="btn btn-info" (click)="izmeni_mejl()">Izmeni</button>
+                    </div>
+                    </div>
+                    <div class="form-group">
+                    <label for="potvrda">Sigurnosno pitanje: {{k.pitanje}}</label>
+                    <div class="d-inline-block ml-2">
+                        <input type="text" class="form-control" id="pitanje" [(ngModel)]="pitanje">
+                        <button class="btn btn-info" (click)="izmeni__pitanje()">Izmeni</button>
+                    </div>
+                    </div>
+                    <div class="form-group">
+                    <label for="potvrda">Odgovor: {{k.odgovor}}</label>
+                    <div class="d-inline-block ml-2">
+                        <input type="text" class="form-control" id="odgovor" [(ngModel)]="odgovor">
+                        <button class="btn btn-info" (click)="izmeni_odgovor()">Izmeni</button>
+                    </div>
+                    </div>
+                    <div class="form-group">
+                    <label for="ime">Ime: {{k.ime}}</label>
+                    <div class="d-inline-block ml-2">
+                        <input type="text" class="form-control" id="ime" [(ngModel)]="ime">
+                        <button class="btn btn-info" (click)="izmeni_ime()">Izmeni</button>
+                    </div>
+                    </div>
+                    <div class="form-group">
+                    <label for="prezime">Prezime: {{k.prezime}}</label>
+                    <div class="d-inline-block ml-2">
+                        <input type="text" class="form-control" id="prezime" [(ngModel)]="prezime">
+                        <button class="btn btn-info" (click)="izmeni_korime()">Izmeni</button>
+                    </div>
+                    </div>
+                    <div class="form-group">
+                    <label for="adresa">Adresa: {{k.adresa}}</label>
+                    <div class="d-inline-block ml-2">
+                        <input type="text" class="form-control" id="adresa" [(ngModel)]="adresa">
+                        <button class="btn btn-info" (click)="izmeni_adresa()">Izmeni</button>
+                    </div>
+                    </div>
+                    <div class="form-group">
+                    <label for="telefon">Kontakt: {{k.kontakt}}</label>
+                    <div class="d-inline-block ml-2">
+                        <input type="text" class="form-control" id="kontakt" [(ngModel)]="kontakt">
+                        <button class="btn btn-info" (click)="izmeni_kontakt()">Izmeni</button>
+                    </div>
+                    </div>
+                    <div class="form-group" *ngIf="k.tip == 'musterija'">
+                    <label for="telefon">Broj kreditne kartice: {{k.kartica}}</label>
+                    <div class="d-inline-block ml-2">
+                        <button class="btn btn-info" (click)="izmeni_karticu()">Izmeni</button>
+                    </div>
+                    </div>
+                    <div class="form-group" *ngIf="korisnik.tip == 'waiter'">
+                    <label for="telefon">Restoran: {{k.radi_u}}</label>
+                    <div class="d-inline-block ml-2">
+                        <button class="btn btn-info" (click)="izmeni_restoran()">Izmeni</button>
+                    </div>
+                    </div>
+                    <div class="form-group">
+                    <p class="form-check-inline">Pol: {{k.pol}}</p>
+                    <div class="d-inline-block ml-2">
+                        <button class="btn btn-info" (click)="izmeni_pol()">Izmeni</button>
+                    </div>
+                    </div>
+                    <div class="form-group">
+                    <p class="form-check-inline">Profilna slika:</p>
+                    <div class="form-check-inline ml-3">
+                        <input type="file" (change)="onFileSelected($event)" #fileInput>
+                    </div>
+                    </div>
+                    <br>
+                    <div class="alert alert-info" role="alert" *ngIf="message != ''">
+                    {{message}}
+                    </div>
+                </div>
+                <table class="table">
+                    <tr>
+                    <td class="text-center">
+                        <button (click)="registruj()" class="btn btn-block btn-info">Registracija</button>
+                    </td>
+                    </tr>
+                </table>
+                </div>
+            </div>
+            </div>
+        </div>
+        </div>
+    </section>
+    </main>
+    <br>
+</body>

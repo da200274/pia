@@ -15,6 +15,7 @@ export class RegisterController{
         let imejlP = req.body.imejl;
         let tipP = req.body.tip;
         let profilnaP = req.body.profilna;
+        let radi_uP = req.body.radi_u
         
         let korisnik = {
             korime: korimeP,
@@ -29,7 +30,8 @@ export class RegisterController{
             imejl: imejlP, 
             tip: tipP, 
             profilna: profilnaP, 
-            status: 0
+            status: 0,
+            radi_u: radi_uP
         };
         
         const existingUser = await KorisnikM.findOne({
@@ -43,11 +45,21 @@ export class RegisterController{
             return res.json({ poruka: "Već postoji korisnik sa tim korisničkim imenom ili email adresom." });
         }
 
-        await new KorisnikM(korisnik).save().then(ok=>{
-            res.json({poruka: "ok"})
-        }).catch(err=>{
-            console.log(err)
-        })
+        if(korisnik.tip == "waiter"){
+            korisnik.status = 1
+            await new KorisnikM(korisnik).save().then(ok=>{
+                res.json({poruka: "ok"})
+            }).catch(err=>{
+                console.log(err)
+            })
+
+        }else{
+            await new KorisnikM(korisnik).save().then(ok=>{
+                res.json({poruka: "ok"})
+            }).catch(err=>{
+                console.log(err)
+            })
+        }
     }
 
     update_photo = async (req: express.Request, res: express.Response)=>{

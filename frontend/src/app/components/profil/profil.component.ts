@@ -30,7 +30,6 @@ export class ProfilComponent implements OnInit{
   }
 
   update_data(){
-    //korisnik vec u localstorage
     this.router.navigate(["update_data"])
   }
 

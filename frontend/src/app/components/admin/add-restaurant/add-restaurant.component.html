@@ -1,73 +1,99 @@
 <body>
     <main>
+        <br>
         <!-- Section -->
         <section class="min-vh-100 d-flex align-items-center">
             <div class="container">
                 <div class="row justify-content-center">
-                    <div class="col-12 col-md-8 col-lg-6 justify-content-center">
-                        <br>
-                        <div class="card bg-warning shadow-soft p-4">
-                            <div class="text-center  pb-0">
-                                <h2 class="mb-0 h5">Registruj restoran</h2>                               
-                            </div>
-                            <div class="card-body text-center">
-                                <div class="form-group">
-                                    <div class="form-group">
-                                        <label for="korime">Naziv restorana</label>
-                                        <div class="input-group mb-4">
-                                            <input class="form-control" id="korime" [(ngModel)]="naziv" type="text" aria-label="email adress">
+                    <!-- Left Section -->
+                    <div class="col-12 col-md-6 col-lg-6">
+                        <section class="section section-lg pt-0">
+                            <div class="container">
+                                <div class="row">
+                                    <div class="col">
+                                        <div class="card bg-secondary shadow-soft border-light p-4">
+                                            <div class="text-center pb-0">
+                                                <h2 class="mb-0 h5">Porudžbine</h2>
+                                            </div>
+                                            <br>
+                                            <div class="row">
+                                                <div class="text-center  pb-0">
+                                                    <h2 class="mb-0 h5">Registruj restoran</h2>                               
+                                                </div>
+                                                <div class="card-body text-center">
+                                                    <div class="form-group">
+                                                        <div class="form-group">
+                                                            <label for="korime">Naziv restorana</label>
+                                                            <div class="input-group mb-4">
+                                                                <input class="form-control" id="korime" [(ngModel)]="naziv" type="text" aria-label="email adress">
+                                                            </div>
+                                                        </div>
+                                                        <div class="form-group">
+                                                            <label for="mejl">Tip</label>
+                                                            <div class="input-group mb-4">
+                                                                <input class="form-control" id="mejl" [(ngModel)]="tip" type="text" aria-label="email adress" required>
+                                                            </div>
+                                                        </div>
+                                                        <div class="form-group">
+                                                            <label for="lozinka">Adresa</label>
+                                                            <div class="input-group mb-4">
+                                                                <input class="form-control" id="lozinka" [(ngModel)]="adresa" type="text" aria-label="email adress" required>
+                                                            </div>
+                                                        </div>
+                                                        <div class="form-group">
+                                                            <label for="potvrda">Krakat opis</label>
+                                                            <div class="input-group mb-4">
+                                                                <input class="form-control" id="potvrda" [(ngModel)]="kratak_opis" type="text" aria-label="Password" required>
+                                                            </div>
+                                                        </div>
+                                                        <div class="form-group">
+                                                            <label for="potvrda">Kontakt</label>
+                                                            <div class="input-group mb-4">
+                                                                <input class="form-control" id="pitanje" [(ngModel)]="kontakt" type="text" aria-label="Password" required>
+                                                            </div>
+                                                        </div>
+                                                        <div class="form-group">
+                                                            <label for="potvrda">Mapa</label>
+                                                            <div class="input-group mb-4">
+                                                                <input class="form-control" id="pitanje" [(ngModel)]="mapa" type="text" aria-label="Password" required>
+                                                            </div>
+                                                        </div>
+                                                        <p class="form-check-inline">Raspored stolova i meni: </p>
+                                                        <div class="form-check-inline mr-3">
+                                                            <input type="file" (change)="onFileSelected($event, 'file1')" #fileInput accept=".json">
+                                                        </div>
+                                                        <br>
+                                                        <div class="alert alert-info" role="alert" *ngIf="message != ''">
+                                                            {{message}}
+                                                        </div>
+                                                    </div>
+                                                    <table class="table">
+                                                        <tr>
+                                                            <td class="text-center">   
+                                                                <button (click)="dodaj_restoran()" class="btn btn-block btn-info">Registracija</button>
+                                                            </td>
+                                                        </tr>
+                                                    </table>
+                                                </div>
+                                            </div>
                                         </div>
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="mejl">Tip</label>
-                                        <div class="input-group mb-4">
-                                            <input class="form-control" id="mejl" [(ngModel)]="tip" type="text" aria-label="email adress" required>
-                                        </div>
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="lozinka">Adresa</label>
-                                        <div class="input-group mb-4">
-                                            <input class="form-control" id="lozinka" [(ngModel)]="adresa" type="text" aria-label="email adress" required>
-                                        </div>
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="potvrda">Krakat opis</label>
-                                        <div class="input-group mb-4">
-                                            <input class="form-control" id="potvrda" [(ngModel)]="kratak_opis" type="text" aria-label="Password" required>
-                                        </div>
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="potvrda">Kontakt</label>
-                                        <div class="input-group mb-4">
-                                            <input class="form-control" id="pitanje" [(ngModel)]="kontakt" type="text" aria-label="Password" required>
-                                        </div>
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="potvrda">Mapa</label>
-                                        <div class="input-group mb-4">
-                                            <input class="form-control" id="pitanje" [(ngModel)]="mapa" type="text" aria-label="Password" required>
-                                        </div>
-                                    </div>
-                                    <p class="form-check-inline">Raspored stolova i meni: </p>
-                                    <div class="form-check-inline mr-3">
-                                        <input type="file" (change)="onFileSelected($event, 'file1')" #fileInput accept=".json">
-                                    </div>
-                                    <br>
-                                    <div *ngIf="file1Data">
-                                        <h3>Spisak stolova i meni:</h3>
-                                        <pre>{{ file1Data | json }}</pre>
-                                    </div>
-                                    <div class="alert alert-info" role="alert" *ngIf="message != ''">
-                                        {{message}}
                                     </div>
                                 </div>
-                                <table class="table">
-                                    <tr>
-                                        <td class="text-center">   
-                                            <button (click)="dodaj_restoran()" class="btn btn-block btn-info">Registracija</button>
-                                        </td>
-                                    </tr>
-                                </table>
+                            </div>
+                        </section>
+                    </div>
+                    <!--Right Section-->
+                    <div class="col-12 col-md-6 col-lg-6">
+                        <div class="card bg-secondary shadow-soft border-light p-4">
+                            <div class="text-center pb-0">
+                                <h2 class="mb-0 h5">Canvas</h2>                               
+                            </div>
+                            <div class="card-body text-center">
+                                <div class="row">
+                                    <canvas #canvas style="border: 1px " width="700" height="350">
+                                        Fallback content
+                                    </canvas>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -75,5 +101,4 @@
             </div>
         </section>
     </main>
-    <br>
 </body>

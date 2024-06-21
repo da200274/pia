@@ -12,7 +12,7 @@ export class RegisterService {
   backendUrl = "http://localhost:4000"
 
   register_user(korime: string, lozinka: string, pitanje: string, odgovor: string, ime: string, prezime: string, pol: string,
-     adresa: string, kontakt: string, mejl: string, kartica: string, profilna: string,  tip: string){
+     adresa: string, kontakt: string, mejl: string, restoran: string, profilna: string,  tip: string){
     const data = {
       korime: korime,
       lozinka: lozinka,
@@ -25,7 +25,7 @@ export class RegisterService {
       kontakt: kontakt, 
       imejl: mejl,
       profilna: profilna,
-      kartica: kartica,
+      radi_u: restoran,
       tip: tip
     }
     return this.http.post<Poruka>(`${this.backendUrl}/register/register`, data);

@@ -16,7 +16,7 @@ export class InsertController{
 
     add_restaurant = (req: express.Request, res: express.Response)=>{
         console.log(req.body)
-        const { naziv, tip, adresa, kratak_opis, kontakt, raspored_stolova, meni } = req.body;
+        const { naziv, tip, adresa, kratak_opis, kontakt, raspored_stolova, meni, toalet, kuhinja, recenzije, mapa } = req.body;
         const restoran = new RestoranM({
             naziv,
             tip,
@@ -24,7 +24,11 @@ export class InsertController{
             kratak_opis,
             kontakt,
             raspored_stolova,
-            meni
+            toalet,
+            kuhinja,
+            meni,
+            recenzije,
+            mapa
         });
 
         new RestoranM(restoran).save().then(ok=>{

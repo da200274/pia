@@ -13,7 +13,7 @@
                             <div class="card-body text-center">
                                 <div class="form-group">
                                     <div class="form-group">
-                                        <img [src]="'assets/profile_pics/' + k.profilna" alt="Image Description">
+                                        <img [src]="'assets/profile_pics/' + k.profilna" alt="Image Description" class="profile-pic">
                                     </div>
                                     <br>
                                     <div class="form-group">
@@ -36,6 +36,9 @@
                                     </div>
                                     <div class="form-group">
                                         <p>Kontakt: {{k.kontakt}}</p>
+                                    </div>
+                                    <div class="form-group" *ngIf="k.tip == 'waiter'">
+                                        <p>Restoran: {{k.radi_u}}</p>
                                     </div>
                                 </div>
                                 <div>
