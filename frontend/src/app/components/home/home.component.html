@@ -53,6 +53,33 @@
                                     </tbody>
                                   </table>
                             </div>
+                            <div>
+                                <form [formGroup]="searchForm">
+                                    <label for="naziv">Naziv:  </label>
+                                    <input type="text" id="naziv" formControlName="naziv">
+                                    <br>
+                                
+                                    <label for="adresa">Adresa:  </label>
+                                    <input type="text" id="adresa" formControlName="adresa">
+                                    <br>
+                                
+                                    <label for="tip">Tip restorana:  </label>
+                                    <input type="text" id="tip" formControlName="tip">
+                                    <br>
+                              
+                                    <button type="submit" (click)="search()">Search</button>
+                                </form>
+                            </div>
+                            <div *ngIf="searched_restaurants.length > 0">
+                                <h3>Search Results:</h3>
+                                <ul>
+                                <li *ngFor="let s of searched_restaurants">
+                                    <strong>Naziv:</strong> {{ s.naziv }} <br>
+                                    <strong>Adresa:</strong> {{ s.adresa }} <br>
+                                    <strong>Tip:</strong> {{ s.tip }}
+                                </li>
+                                </ul>
+                            </div>
                         </div>
                     </div>
                 </div>

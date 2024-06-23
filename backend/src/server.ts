@@ -9,6 +9,7 @@ import insertRouter from './routers/insert.router';
 import getWaiterRouter from './routers/get_waiter.router';
 import changeRouter from './routers/change.router';
 import sortRouter from './routers/sort.router';
+import searchRouter from './routers/search.router';
 
 const app = express();
 
@@ -30,6 +31,7 @@ router.use('/update', updateRouter)
 router.use('/insert', insertRouter)
 router.use('/change', changeRouter)
 router.use('/sort', sortRouter)
+router.use('/search', searchRouter)
 
 app.use("/" ,router)
 app.listen(4000, () => console.log(`Express server running on port 4000`));
