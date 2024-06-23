@@ -1,15 +1,24 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Korisnik } from 'src/app/models/korisnik';
 import { ChangeDataService } from 'src/app/services/change-data.service';
+import { RegisterService } from 'src/app/services/register.service';
 
 @Component({
   selector: 'app-update-data',
   templateUrl: './update-data.component.html',
   styleUrls: ['./update-data.component.css']
 })
-export class UpdateDataComponent {
-  constructor(private router: Router, private updateServis: ChangeDataService){}
+export class UpdateDataComponent implements OnInit{
+  constructor(private router: Router, private updateServis: ChangeDataService, private registerServis: RegisterService){}
+  ngOnInit(): void {
+    let temp = localStorage.getItem("profil")
+    if(temp) this.curr_korime = temp
+    let kk = localStorage.getItem("korisnik")
+    if(kk){
+      this.k = JSON.parse(kk)
+    }
+  }
 
   onFileSelected(event: any): void {
     this.file = event.target.files[0] as File;
@@ -58,23 +67,105 @@ export class UpdateDataComponent {
     }
   }
 
-  izmeni(){
-   this.data = {
-    ime: this.ime
-   }
+  async izmeni(i: number){
+    this.data = { korime: this.curr_korime};
+    switch (i) {
+      case 1:
+        this.data.podatak = this.korime;
+        this.data.kolona = 'korime';
+        break;
+      case 2:
+        this.data.podatak = this.imejl;
+        this.data.kolona = 'imejl';
+        break;
+      case 3:
+        this.data.podatak = this.pitanje;
+        this.data.kolona = 'pitanje';
+        break;
+      case 4:
+        this.data.podatak = this.odgovor;
+        this.data.kolona = 'odgovor';
+        break;
+      case 5:
+        this.data.podatak = this.ime;
+        this.data.kolona = 'ime';
+        break;
+      case 6:
+        this.data.podatak = this.prezime;
+        this.data.kolona = 'prezime';
+        break;
+      case 7:
+        this.data.podatak = this.adresa;
+        this.data.kolona = 'adresa';
+        break;
+      case 8:
+        this.data.podatak = this.kontakt;
+        this.data.kolona = 'kontakt';
+        break;
+      case 9:
+        this.data.podatak = this.kartica;
+        this.data.kolona = 'kartica';
+        break;
+      case 10:
+        this.data.podatak = this.radi_u;
+        this.data.kolona = 'radi_u';
+        break;
+      case 11:
+        this.data.podatak = this.pol;
+        this.data.kolona = 'pol';
+        break;
+      case 12:
+        await this.send_photo()
 
-   this.updateServis.change('change_ime', this.data).subscribe(
-    msg=>{
-      if(msg.poruka == "ok"){
-        this.message_success = "Uspešno promenjeno ime"
-        this.reinicijalizuj();
-      }
+        this.data.podatak = this.profilna;
+        this.data.kolona = 'profilna';
+        break;
     }
-   )
+    console.log(this.data)
+    this.updateServis.change(this.data).subscribe(
+      msg=>{
+        if(msg.poruka == "ok"){
+          if(i == 1){
+            localStorage.clear()
+            this.router.navigate(['login'])
+          }
+          this.reinicijalizuj(msg.korisnik);
+        }
+      }
+    )
   }
 
-  reinicijalizuj(){
+  reinicijalizuj(kor: any){
+    console.log(kor)
+    localStorage.setItem("korisnik", JSON.stringify(kor))
+    this.k = kor
+    console.log(this.k)
+  }
 
+  send_photo(): Promise<void>{
+    return new Promise((resolve, reject) => {
+      if (this.file != null) {
+        this.registerServis.file_upload(this.file).subscribe(
+          data => {
+            console.log(data);
+            if (data.poruka != "not ok") {
+              this.profilna = data.poruka;
+            } else {
+              this.message = "Neuspešno dodavanje slike!";
+            }
+            resolve();
+          },
+          error => {
+            console.error(error);
+            this.message = "Greška prilikom dodavanja slike!";
+            reject(error);
+          }
+        );
+      } else {
+        this.profilna = 'default.png';
+        resolve();
+      }
+    });
   }
 
 
@@ -83,7 +174,7 @@ export class UpdateDataComponent {
 
 
   korime: string = "";
-  mejl: string = "";
+  imejl: string = "";
   pitanje: string = "";
   odgovor: string = "";
   ime: string = "";
@@ -99,6 +190,7 @@ export class UpdateDataComponent {
   data: any;
   k: Korisnik = new Korisnik()
 
+  curr_korime: string = ""
+
   message: string = ""
-  message_success: string = ""
 }

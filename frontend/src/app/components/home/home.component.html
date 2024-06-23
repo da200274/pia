@@ -20,29 +20,35 @@
                                     <thead class="thead-dark">
                                       <tr>
                                         <th scope="col">#</th>
-                                        <th scope="col">Naziv</th>
-                                        <th scope="col">Adresa</th>
-                                        <th scope="col">Tip restorana</th>
+                                        <th scope="col" (click)="sortData('naziv')">
+                                            Naziv
+                                            <span *ngIf="sortColumn === 'naziv'">
+                                              <span *ngIf="sortDirection === 'asc'">▲</span>
+                                              <span *ngIf="sortDirection === 'desc'">▼</span>
+                                            </span>
+                                          </th>
+                                          <th scope="col" (click)="sortData('adresa')">
+                                            Adresa
+                                            <span *ngIf="sortColumn === 'adresa'">
+                                              <span *ngIf="sortDirection === 'asc'">▲</span>
+                                              <span *ngIf="sortDirection === 'desc'">▼</span>
+                                            </span>
+                                          </th>
+                                          <th scope="col" (click)="sortData('tip')">
+                                            Tip restorana
+                                            <span *ngIf="sortColumn === 'tip'">
+                                              <span *ngIf="sortDirection === 'asc'">▲</span>
+                                              <span *ngIf="sortDirection === 'desc'">▼</span>
+                                            </span>
+                                          </th>
                                       </tr>
                                     </thead>
                                     <tbody>
-                                      <tr>
-                                        <th scope="row">1</th>
-                                        <td>Mark</td>
-                                        <td>Otto</td>
-                                        <td>@mdo</td>
-                                      </tr>
-                                      <tr>
-                                        <th scope="row">2</th>
-                                        <td>Mark</td>
-                                        <td>Otto</td>
-                                        <td>@mdo</td>
-                                      </tr>
-                                      <tr>
-                                        <th scope="row">3</th>
-                                        <td>Mark</td>
-                                        <td>Otto</td>
-                                        <td>@mdo</td>
+                                      <tr *ngFor="let r of restaurants; let i = index">
+                                        <th scope="row">{{i + 1}}</th>
+                                        <td>{{r.naziv}}</td>
+                                        <td>{{r.adresa}}</td>
+                                        <td>{{r.tip}}</td>
                                       </tr>
                                     </tbody>
                                   </table>
@@ -65,7 +71,7 @@
                         <h2 class="h1 mb-4">Nešto o nama</h2>
                         <p class="lead">Themesberg is an experienced and passionate group of designers, developers, project managers, writers and artists. Every client we work with becomes a part of the team. Together we face the challenges and celebrate the victories.</p>
                         <p class="lead">Our small team is active in the creative community, endlessly interested in what’s next, and generally pleasant to be around.</p>
-                        <img src="../../assets/img/signature.svg" alt="signature" class="mt-4" width="150">
+                        <!--<img src="../../assets/img/signature.svg" alt="signature" class="mt-4" width="150">-->
                     </div>
                 </div>
             </div>

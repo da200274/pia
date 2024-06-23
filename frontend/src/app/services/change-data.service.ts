@@ -11,8 +11,8 @@ export class ChangeDataService {
 
   backendUrl = "http://localhost:4000"
 
-  change(endpoint: string, data: any){
-    return this.http.post<Poruka>(`${this.backendUrl}/change/${endpoint}`, data);
+  change(data: any){
+    return this.http.post<Poruka>(`${this.backendUrl}/change/change`, data);
   }
 
 }
