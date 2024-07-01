@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { Korisnik } from '../models/korisnik';
 import { Restoran } from '../models/restoran';
 import { Porudzbina } from '../models/porudzbina';
+import { Rezervacija } from '../models/rezervacija';
 
 @Injectable({
   providedIn: 'root'
@@ -45,10 +46,25 @@ export class FetchService {
     return this.http.post<Porudzbina[]>(`${this.backendUrl}/get/get_active_orders`, data);
   }
 
-  archive(korime: string){
+  archive_orders(korime: string){
     const data = {
       korime: korime
     }
-    return this.http.post<Porudzbina[]>(`${this.backendUrl}/get/archive`, data);
+    return this.http.post<Porudzbina[]>(`${this.backendUrl}/get/archive_orders`, data);
+  }
+
+  archive_reservations(korime: string){
+    const data = {
+      gost: korime
+    }
+    return this.http.post<Rezervacija[]>(`${this.backendUrl}/get/archive_reservations`, data);
+  }
+
+  current_reservations(korime: string){
+    const data = {
+      gost: korime,
+      status: 1
+    }
+    return this.http.post<Rezervacija[]>(`${this.backendUrl}/get/current_reservations`, data);
   }
 }

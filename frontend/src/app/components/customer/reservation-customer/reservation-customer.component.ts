@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Restoran } from 'src/app/models/restoran';
 import { Rezervacija } from 'src/app/models/rezervacija';
@@ -12,13 +12,27 @@ import { ReserveService } from 'src/app/services/reserve.service';
   templateUrl: './reservation-customer.component.html',
   styleUrls: ['./reservation-customer.component.css']
 })
-export class ReservationCustomerComponent {
+export class ReservationCustomerComponent implements OnInit{
 
   constructor(
     private reserveServis: ReserveService,
     private insertServis: InsertDataService,
+    private fetchServis: FetchService,
     private router: Router
   ){}
+
+  ngOnInit(): void {
+    let temp = localStorage.getItem("restoran")
+    if(!temp) return
+    else this.restoran_ime = temp
+    this.fetchServis.get_restaurant(this.restoran_ime).subscribe(
+      res=>{
+        if(res){
+          this.restoran_adresa = res.adresa
+        }
+      }
+    )
+  }
 
   opis: string = ""
   kap: number = 0
@@ -33,6 +47,7 @@ export class ReservationCustomerComponent {
   slobodni_stolovi: string[] = []
   zauzeti_stolovi: string[] = []
   restoran_ime: string = ""
+  restoran_adresa: string = ""
   datum_vreme: Date|string = ""
 
 
@@ -42,10 +57,7 @@ export class ReservationCustomerComponent {
     if(this.message != ''){
       return;
     }
-
-    let temp = localStorage.getItem("restoran")
-    if(!temp) return
-    else this.restoran_ime = temp
+    this.zauzeti_stolovi = []
     this.datum_vreme = new Date(`${this.datum}T${this.vreme}Z`);
     this.reserveServis.get_reservations(this.datum_vreme, this.restoran_ime).subscribe(
       rez=>{
@@ -75,6 +87,11 @@ export class ReservationCustomerComponent {
           const zauzeti_sto = this.zauzeti_stolovi[i];
           this.slobodni_stolovi = this.slobodni_stolovi.filter(sto => sto !== zauzeti_sto);
         }
+
+        if(this.slobodni_stolovi.length == 0){
+          this.message = "Ne postoji slobodan sto u tom terminu."
+          this.showed = false
+        }
       }
     )
   }
@@ -82,7 +99,7 @@ export class ReservationCustomerComponent {
   zavrsi(){
     let temp = localStorage.getItem("profil")
     if(temp){
-      this.insertServis.add_reservation(this.restoran_ime, temp, this.selected_table, this.datum_vreme).subscribe(
+      this.insertServis.add_reservation(this.restoran_ime, temp, this.selected_table, this.datum_vreme, this.restoran_adresa).subscribe(
         msg=>{
           if(msg.poruka == "ok"){
             this.router.navigate(['restaurants'])

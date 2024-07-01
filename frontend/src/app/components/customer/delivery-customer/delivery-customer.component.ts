@@ -35,7 +35,7 @@ export class DeliveryCustomerComponent implements OnInit{
   }
 
   dohvati_arhivu(){
-    this.fetchServis.archive(this.korime).subscribe(
+    this.fetchServis.archive_orders(this.korime).subscribe(
       arh=>{
         if(arh){
           this.arhiva = arh

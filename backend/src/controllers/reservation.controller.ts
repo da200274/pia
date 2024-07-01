@@ -11,13 +11,29 @@ export class ReserveController{
         let vreme_end = new Date(vreme_start)
         vreme_end.setHours(vreme_end.getHours() + 3)
 
-        RezervacijaM.find({ naziv_restorana: ime,
-            $or: [ { vreme_pocetka: { $lt: vreme_start } },{ vreme_pocetka: { $gte: vreme_end } }]
+
+        RezervacijaM.find({ 
+            naziv_restorana: ime, 
+            datum_vreme_pocetka: { $lte: vreme_end },
+            datum_vreme_kraja: { $gte: vreme_start }
         }).then((reservations)=>{
             res.json(reservations)
         }).catch((err)=>{
             console.log(err)
         })
+
+        /*
+        $or: [
+                 { $and: [
+                    {datum_vreme_pocetka: { $lte: vreme_start },
+                    datum_vreme_kraja: {$gte: vreme_start}}
+                ]},
+                { $and: [
+                    {datum_vreme_pocetka: { $lte: vreme_end },
+                    datum_vreme_kraja: {$gte: vreme_end}}
+                ]}
+                ]
+        */
     }
 
     get_tables = (req: express.Request, res: express.Response)=>{

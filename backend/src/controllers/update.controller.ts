@@ -1,6 +1,7 @@
 import express from 'express'
 import KorisnikM from '../models/korisnik';
 import PorudzbinaM from '../models/porudzbina'
+import RezervacijaM from '../models/rezervacija'
 
 export class UpdateController{
 
@@ -55,6 +56,17 @@ export class UpdateController{
     reject_offer = (req: express.Request, res: express.Response)=>{
         let idP = req.body.id
         PorudzbinaM.deleteOne({_id: idP}).then((ok)=>{
+            res.json({poruka: "ok"})
+        }).catch((err)=>{
+            console.log(err)
+        })
+    }
+
+    review = (req: express.Request, res: express.Response)=>{
+        let idR = req.body.id
+        let komentar = req.body.komentar
+        let ocena = req.body.ocena
+        RezervacijaM.updateOne({_id: idR}, { komentar: komentar, ocena: ocena}).then((ok)=>{
             res.json({poruka: "ok"})
         }).catch((err)=>{
             console.log(err)

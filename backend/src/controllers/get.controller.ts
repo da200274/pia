@@ -2,6 +2,7 @@ import express from 'express'
 import KorisnikM from '../models/korisnik';
 import RestoranM from '../models/restoran';
 import PorudzbinaM from '../models/porudzbina'
+import RezervacijaM from '../models/rezervacija'
 
 export class GetController{
 
@@ -56,12 +57,41 @@ export class GetController{
         })
     }
 
-    archive = (req: express.Request, res: express.Response)=>{
+    archive_orders = (req: express.Request, res: express.Response)=>{
         let korime = req.body.korime
         PorudzbinaM.find({kupac: korime, status: 2})
         .sort({vreme_dostave : -1})
         .then((user)=>{
             res.json(user)
+        }).catch((err)=>{
+            console.log(err)
+        })
+    }
+
+    archive_reservations = (req: express.Request, res: express.Response)=>{
+        let gost = req.body.gost
+        let now = new Date()
+        now.setHours(now.getHours() + 2)
+        
+        RezervacijaM.find({gost: gost, datum_vreme_pocetka: { $lte: now }})
+        .sort({datum_vreme_pocetka : -1})
+        .then((reservations)=>{
+            res.json(reservations)
+        }).catch((err)=>{
+            console.log(err)
+        })
+    }
+
+    current_reservations = (req: express.Request, res: express.Response)=>{
+        let gost = req.body.gost
+        let status = req.body.status
+        let now = new Date()
+        now.setHours(now.getHours() + 2)
+        
+        RezervacijaM.find({gost: gost, status: status, datum_vreme_pocetka: { $gt: now }})
+        .sort({datum_vreme_pocetka : 1})
+        .then((reservations)=>{
+            res.json(reservations)
         }).catch((err)=>{
             console.log(err)
         })

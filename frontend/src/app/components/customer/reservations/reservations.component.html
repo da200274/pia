@@ -1,0 +1,85 @@
+<body>
+    <main>
+        <!-- Section -->
+        <section class="min-vh-100 d-flex align-items-center">
+            <div class="container">
+                <div class="row justify-content-center">
+                    <!-- Left Section -->
+                    <div class="col-12 col-md-12 col-lg-12">
+                        <section class="section section-lg pt-0">
+                            <div class="container">
+                                <div class="row">
+                                    <div class="col">
+                                        <div class="card bg-secondary shadow-soft border-light p-4">
+                                            <div class="text-center pb-0">
+                                                <h2 class="mb-0 h5">Aktuelne rezervacije</h2>
+                                            </div>
+                                            <br>
+                                            <div class="row">
+                                                <table class="table table-striped">
+                                                    <thead class="thead-dark">
+                                                      <tr>
+                                                        <th>Naziv restorana</th>
+                                                        <th>Datum</th>
+                                                        <th>Adresa restorana</th>
+                                                      </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                        <tr *ngFor="let a of aktuelne_rezervacije">
+                                                            <td>{{a.naziv_restorana}}</td>
+                                                            <td>{{a.datum_vreme_pocetka}}</td>
+                                                            <td>{{a.adresa}}</td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </section>
+                    </div>
+                    <br>
+                    <div class="col-12 col-md-12 col-lg-12">
+                        <div class="card bg-secondary shadow-soft border-light p-4">
+                            <div class="text-center pb-0">
+                                <h2 class="mb-0 h5">Arhiva</h2>                               
+                            </div>
+                            <div class="card-body text-center">
+                                <div class="form-group">
+                                    <div class="row">
+                                        <div class="form-group text-center fw-bold">Arhiva rezervacija</div>
+                                        <table class="table table-striped">
+                                            <thead class="thead-dark">
+                                              <tr>
+                                                <th>Datum i vreme</th>
+                                                <th>Restoran</th>
+                                                <th>Komentar</th>
+                                                <th>Ocena</th>
+                                                <th>Recenzija</th>
+                                              </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr *ngFor="let a of arhiva">
+                                                    <td>{{a.datum_vreme_pocetka}}</td>
+                                                    <td>{{a.naziv_restorana}}</td>
+                                                    <td>{{a.komentar}}</td>
+                                                    <td>{{a.ocena}}</td>
+                                                    <td *ngIf="a.ocena == 0 && a.status == 2">
+                                                        <button class="btn btn-info" (click)="goto_review(a._id)">
+                                                            Dodaj
+                                                        </button>
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+</body>

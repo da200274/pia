@@ -47,6 +47,9 @@
                                         <option *ngFor="let s of slobodni_stolovi" [value]="s" >{{s}}</option>
                                     </select>
                                     <br>
+                                    <div class="alert alert-info" role="alert" *ngIf="message != ''">
+                                        {{message}}
+                                    </div>
                                     <br>
                                     <button (click)="zavrsi()" class="btn btn-block btn-info">Finaliziraj</button>
                                 </div>

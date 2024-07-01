@@ -1,0 +1,42 @@
+<body>
+    <main>
+        <!-- Section -->
+        <section class="min-vh-100 d-flex align-items-center">
+            <div class="container">
+                <div class="row justify-content-center">
+                    <div class="col-12 col-md-8 col-lg-6 justify-content-center">
+                        <br>
+                        <div class="card bg-warning shadow-soft p-4">
+                            <div class="text-center  pb-0">
+                                <h2 class="mb-0 h5">Vaša ocena</h2>                               
+                            </div>
+                            <div class="card-body text-center">
+                                <div class="form-group">
+                                    <div class="heart-rating">
+                                        <i *ngFor="let heart of hearts; let i = index" 
+                                           class="fas fa-heart" 
+                                           [ngClass]="{'selected': i < rating}"
+                                           (click)="setRating(i + 1)">
+                                        </i>
+                                      </div>
+                                    <p>{{rating}}/{{hearts.length}}</p>
+                                    <div class="form-group">
+                                        <label for="opis">Komentar</label>
+                                        <div class="input-group mb-4">
+                                            <input class="form-control" id="opis" [(ngModel)]="opis" type="text" aria-label="Password" required>
+                                        </div>
+                                    </div>
+                                    
+                                </div>
+                                <div>
+                                    <button (click)="zavrsi()" class="btn btn-block btn-info">Oceni</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+    <br>
+</body>

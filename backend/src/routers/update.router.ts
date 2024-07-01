@@ -27,4 +27,8 @@ updateRouter.route("/reject_offer").post(
     (req,res)=>new UpdateController().reject_offer(req,res)
 )
 
+updateRouter.route("/reviewed").post(
+    (req,res)=>new UpdateController().review(req,res)
+)
+
 export default updateRouter;

@@ -39,8 +39,11 @@ export class InsertController{
     }
 
     add_reservation = (req: express.Request, res: express.Response)=>{
-        console.log(req.body)
-        const { naziv_restorana, gost, datum_vreme_pocetka, sto_id, status, konobar } = req.body;
+        const { naziv_restorana, gost, datum_vreme_pocetka, sto_id, status, konobar, adresa } = req.body;
+        let komentar = ""
+        let ocena = 0
+        let datum_vreme_kraja = new Date(datum_vreme_pocetka)
+        datum_vreme_kraja.setHours(datum_vreme_kraja.getHours() + 3)
         
         const rezervacija = new RezervacijaM({
             naziv_restorana,
@@ -48,7 +51,11 @@ export class InsertController{
             konobar,
             sto_id,
             status,
-            datum_vreme_pocetka
+            datum_vreme_pocetka,
+            datum_vreme_kraja,
+            adresa,
+            komentar,
+            ocena
         });
 
         new RezervacijaM(rezervacija).save().then(ok=>{

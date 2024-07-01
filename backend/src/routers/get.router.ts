@@ -27,8 +27,16 @@ getRouter.route("/get_active_orders").post(
     (req,res)=>new GetController().get_active_orders(req,res)
 )
 
-getRouter.route("/archive").post(
-    (req,res)=>new GetController().archive(req,res)
+getRouter.route("/archive_orders").post(
+    (req,res)=>new GetController().archive_orders(req,res)
+)
+
+getRouter.route("/archive_reservations").post(
+    (req,res)=>new GetController().archive_reservations(req,res)
+)
+
+getRouter.route("/current_reservations").post(
+    (req,res)=>new GetController().current_reservations(req,res)
 )
 
 export default getRouter;

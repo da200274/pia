@@ -1,0 +1,17 @@
+.heart-rating {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .heart-rating i {
+    font-size: 2rem;
+    color: lightgray;
+    cursor: pointer;
+    transition: color 0.2s;
+  }
+  
+  .heart-rating i.selected {
+    color: #22DAD7;
+  }
+  

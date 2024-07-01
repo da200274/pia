@@ -55,4 +55,13 @@ export class UpdateDataService {
     }
     return this.http.post<Poruka>(`${this.backendUrl}/update/reject_offer`, data);
   }
+
+  give_review(_id: string, opis: string, ocena: number){
+    const data = {
+      id: _id,
+      komentar: opis,
+      ocena: ocena
+    }
+    return this.http.post<Poruka>(`${this.backendUrl}/update/reviewed`, data);
+  }
 }
