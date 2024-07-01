@@ -91,6 +91,10 @@ export class RestaurantComponent implements OnInit{
     this.porudzbina.cena = cena
   }
 
+  goto_reserve(){
+    this.router.navigate(['reservation_customer']);
+  }
+
   restoran: Restoran = new Restoran()
   porudzbina: Porudzbina = new Porudzbina()
   korisnik: Korisnik = new Korisnik()

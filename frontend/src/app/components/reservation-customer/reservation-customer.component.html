@@ -1,0 +1,61 @@
+<body>
+    <main>
+        <!-- Section -->
+        <section class="min-vh-100 d-flex align-items-center">
+            <div class="container">
+                <div class="row justify-content-center">
+                    <div class="col-12 col-md-8 col-lg-6 justify-content-center">
+                        <br>
+                        <div class="card bg-warning shadow-soft p-4">
+                            <div class="text-center  pb-0">
+                                <h2 class="mb-0 h5">Izaberi termin</h2>                               
+                            </div>
+                            <div class="card-body text-center">
+                                <div class="form-group" *ngIf="!showed">
+                                    <div class="form-group">
+                                        <label for="datetime-local">Datum:</label>
+                                        <input class="form-control" type="date" id="datetime-local" name="datetime-local" [(ngModel)]="datum" required>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="vreme">Vreme:</label>
+                                        <input class="form-control" type="time" id="vreme" name="datetime-local" [(ngModel)]="vreme" required>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="gosti">Broj gostiju</label>
+                                        <div class="input-group mb-4">
+                                            <input class="form-control" id="gosti" [(ngModel)]="kap" type="number" aria-label="email adress" required>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="opis">Kratak opis</label>
+                                        <div class="input-group mb-4">
+                                            <input class="form-control" id="opis" [(ngModel)]="opis" type="text" aria-label="Password" required>
+                                        </div>
+                                    </div>
+                                    <br>
+                                    <div class="alert alert-info" role="alert" *ngIf="message != ''">
+                                        {{message}}
+                                    </div>
+                                    <div class="text-center">   
+                                        <button (click)="rezervisi()" class="btn btn-block btn-info">Rezerviši</button>
+                                    </div>
+                                </div>
+                                <div *ngIf="showed">
+                                    <label for="pet-select">Izaberi sto:</label>
+
+                                    <select name="pets" id="pet-select" [(ngModel)]="selected_table">
+                                        <option *ngFor="let s of slobodni_stolovi" [value]="s" >{{s}}</option>
+                                    </select>
+                                    <br>
+                                    <br>
+                                    <button (click)="zavrsi()" class="btn btn-block btn-info">Finaliziraj</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+    <br>
+</body>

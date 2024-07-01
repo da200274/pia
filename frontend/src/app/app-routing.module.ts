@@ -15,6 +15,7 @@ import { DeliveryCustomerComponent } from './components/customer/delivery-custom
 import { AddWaiterComponent } from './components/admin/add-waiter/add-waiter.component';
 import { AddRestaurantComponent } from './components/admin/add-restaurant/add-restaurant.component';
 import { UpdateDataComponent } from './components/update-data/update-data.component';
+import { ReservationCustomerComponent } from './components/reservation-customer/reservation-customer.component';
 
 const routes: Routes = [
   {path:"", component:HomeComponent},
@@ -31,7 +32,8 @@ const routes: Routes = [
   {path:"delivery_customer", component:DeliveryCustomerComponent},
   {path:"add_waiter", component: AddWaiterComponent},
   {path:"add_restaurant", component:AddRestaurantComponent},
-  {path:"update_data", component:UpdateDataComponent}
+  {path:"update_data", component:UpdateDataComponent},
+  {path:"reservation_customer", component:ReservationCustomerComponent}
 ];
 
 @NgModule({

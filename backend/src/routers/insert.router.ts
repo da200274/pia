@@ -11,4 +11,8 @@ insertRouter.route("/restaurant").post(
     (req,res)=>new InsertController().add_restaurant(req,res)
 )
 
+insertRouter.route("/reservation").post(
+    (req,res)=>new InsertController().add_reservation(req,res)
+)
+
 export default insertRouter;

@@ -25,6 +25,7 @@ import { DeliveryCustomerComponent } from './components/customer/delivery-custom
 import { AddWaiterComponent } from './components/admin/add-waiter/add-waiter.component';
 import { AddRestaurantComponent } from './components/admin/add-restaurant/add-restaurant.component';
 import { UpdateDataComponent } from './components/update-data/update-data.component';
+import { ReservationCustomerComponent } from './components/reservation-customer/reservation-customer.component';
 
 @NgModule({
   declarations: [
@@ -48,7 +49,8 @@ import { UpdateDataComponent } from './components/update-data/update-data.compon
     DeliveryCustomerComponent,
     AddWaiterComponent,
     AddRestaurantComponent,
-    UpdateDataComponent
+    UpdateDataComponent,
+    ReservationCustomerComponent
   ],
   imports: [
     BrowserModule,
