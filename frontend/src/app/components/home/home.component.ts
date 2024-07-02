@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Restoran } from 'src/app/models/restoran';
 import { FetchService } from 'src/app/services/fetch.service';
+import { ReserveService } from 'src/app/services/reserve.service';
 import { SearchService } from 'src/app/services/search.service';
 import { SortService } from 'src/app/services/sort.service';
 
@@ -18,6 +19,7 @@ export class HomeComponent implements OnInit{
     private fetchServis: FetchService,
     private sortServis: SortService,
     private searchServis: SearchService,
+    private reservationServis: ReserveService,
     private fb: FormBuilder
   ){
     this.searchForm = this.fb.group({
@@ -31,6 +33,33 @@ export class HomeComponent implements OnInit{
     this.fetchServis.all_restaurants().subscribe(
       rs=>{
         if(rs) this.restaurants = rs
+        this.broj_restorana = this.restaurants.length
+        this.fetchServis.count_customers().subscribe(
+          rez=>{
+            this.broj_gostiju = rez
+            this.dohvati_brojke()
+          }
+        )
+      }
+    )
+  }
+
+  dohvati_brojke(){
+    this.reservationServis.get_last_day().subscribe(
+      dan=>{
+        if(dan) this.broj_rezervacija_dan = dan
+      }
+    )
+
+    this.reservationServis.get_last_week().subscribe(
+      nedelja=>{
+        if(nedelja) this.broj_rezervacija_nedelja = nedelja
+      }
+    )
+
+    this.reservationServis.get_last_month().subscribe(
+      mesec=>{
+        if(mesec) this.broj_rezervacija_mesec = mesec
       }
     )
   }
@@ -70,4 +99,10 @@ export class HomeComponent implements OnInit{
   sortDirection: 'asc' | 'desc' = 'asc';
   sortColumn: string = '';
   searched_restaurants: Restoran[] = []
+
+  broj_restorana: number = 0;
+  broj_gostiju: number = 0;
+  broj_rezervacija_dan: number = 0;
+  broj_rezervacija_nedelja: number = 0;
+  broj_rezervacija_mesec: number = 0
 }

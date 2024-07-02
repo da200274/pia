@@ -22,15 +22,15 @@ export class InsertDataService {
     return this.http.post<Poruka>(`${this.backendUrl}/insert/restaurant`, r);
   }
 
-  add_reservation(r: string, korime: string, sto: string, datum_vreme: Date|string, adresa: string){
+  add_reservation(r: string, korime: string, datum_vreme: Date|string, adresa: string, kap: number){
     const data = {
       naziv_restorana: r,
       gost: korime,
-      sto_id: sto,
       datum_vreme_pocetka: datum_vreme,
       status: 0,
       konobar: "",
-      adresa: adresa
+      adresa: adresa,
+      broj_ljudi: kap
     }
     return this.http.post<Poruka>(`${this.backendUrl}/insert/reservation`, data);
   }

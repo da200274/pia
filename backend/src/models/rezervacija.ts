@@ -10,10 +10,12 @@ const rezervacijaSchema = new mongoose.Schema(
         datum_vreme_pocetka: Date,
         datum_vreme_kraja: Date,
         adresa: String,
+        broj_ljudi: Number,
         komentar: String,
         ocena: Number
     },{
-        versionKey:false
+        versionKey:false,
+        timestamps: { createdAt: 'kreirana_u'}
     }
 );
 

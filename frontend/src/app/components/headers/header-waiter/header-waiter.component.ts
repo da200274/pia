@@ -34,4 +34,8 @@ export class HeaderWaiterComponent implements OnInit{
   goto_dostave(){
     this.router.navigate(['waiter_orders'])
   }
+
+  goto_rezervacije(){
+    this.router.navigate(['waiter_reservations'])
+  }
 }

@@ -26,4 +26,16 @@ export class ReserveService {
     }
     return this.http.post<Sto[]>(`${this.backendUrl}/reservation/get_table`, data);
   }
+
+  get_last_day(){
+    return this.http.post<number>(`${this.backendUrl}/reservation/get_last_day`, "");
+  }
+
+  get_last_week(){
+    return this.http.post<number>(`${this.backendUrl}/reservation/get_last_week`, "");
+  }
+
+  get_last_month(){
+    return this.http.post<number>(`${this.backendUrl}/reservation/get_last_month`, "");
+  }
 }

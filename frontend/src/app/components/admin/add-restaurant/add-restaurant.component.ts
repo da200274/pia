@@ -21,7 +21,7 @@ export class AddRestaurantComponent implements OnInit{
       context.strokeStyle = 'red';
       context.fillStyle = 'rgba(17, 0, 255, 0.5)';
       if (this.file1Data && context) {
-        context.fillStyle = 'lightgray'; // Change this to your desired background color
+        context.fillStyle = 'lightgray';
         context.fillRect(0, 0, canvas.width, canvas.height);
 
         this.drawLayout(context);
@@ -125,6 +125,7 @@ export class AddRestaurantComponent implements OnInit{
         kontakt: this.kontakt,
         kratak_opis: this.kratak_opis,
         mapa: this.mapa,
+        radno_vreme: this.radno_vreme,
         raspored_stolova: this.file1Data.raspored_stolova,
         meni: this.file1Data.meni,
         kuhinja: this.file1Data.kuhinja,
@@ -158,6 +159,7 @@ export class AddRestaurantComponent implements OnInit{
   kratak_opis: string = ""
   kontakt: string = ""
   mapa: string = ""
+  radno_vreme: string = ""
   message: string = ""
 
   restoran: Restoran = new Restoran()

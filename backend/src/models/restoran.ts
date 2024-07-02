@@ -36,7 +36,6 @@ const recenzijaSchema = new mongoose.Schema(
 
 const kuhinjaSchema = new mongoose.Schema(
     {
-        radno_vreme: String,
         koordinate: [Number]
     }
 );
@@ -60,6 +59,7 @@ const restoranSchema = new mongoose.Schema(
             default: () => ({ stolovi: [] })
         },
         kuhinja: kuhinjaSchema,
+        radno_vreme: String,
         toalet: toaletSchema,
         meni: [meniSchema],
         recenzije: [recenzijaSchema]

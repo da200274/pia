@@ -11,7 +11,7 @@
                                 <h2 class="mb-0 h5">Izaberi termin</h2>                               
                             </div>
                             <div class="card-body text-center">
-                                <div class="form-group" *ngIf="!showed">
+                                <div class="form-group">
                                     <div class="form-group">
                                         <label for="datetime-local">Datum:</label>
                                         <input class="form-control" type="date" id="datetime-local" name="datetime-local" [(ngModel)]="datum" required>
@@ -39,19 +39,6 @@
                                     <div class="text-center">   
                                         <button (click)="rezervisi()" class="btn btn-block btn-info">Rezerviši</button>
                                     </div>
-                                </div>
-                                <div *ngIf="showed">
-                                    <label for="pet-select">Izaberi sto:</label>
-
-                                    <select name="pets" id="pet-select" [(ngModel)]="selected_table">
-                                        <option *ngFor="let s of slobodni_stolovi" [value]="s" >{{s}}</option>
-                                    </select>
-                                    <br>
-                                    <div class="alert alert-info" role="alert" *ngIf="message != ''">
-                                        {{message}}
-                                    </div>
-                                    <br>
-                                    <button (click)="zavrsi()" class="btn btn-block btn-info">Finaliziraj</button>
                                 </div>
                             </div>
                         </div>

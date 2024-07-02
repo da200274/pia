@@ -1,0 +1,67 @@
+<body>
+    <main>
+        <!-- Section -->
+        <section class="min-vh-100 d-flex align-items-center">
+            <div class="container">
+                <div class="row justify-content-center">
+                    <!-- Left Section -->
+                    <div class="col-12 col-md-12 col-lg-12">
+                        <section class="section section-lg pt-0">
+                            <div class="container">
+                                <div class="row">
+                                    <div class="col">
+                                        <div class="card bg-secondary shadow-soft border-light p-4">
+                                            <div class="text-center pb-0">
+                                                <h2 class="mb-0 h5">Aktuelne rezervacije</h2>
+                                            </div>
+                                            <br>
+                                            <div class="row">
+                                                <table class="table table-striped">
+                                                    <thead class="thead-dark">
+                                                      <tr>
+                                                        <th>Gost</th>
+                                                        <th>Datum</th>
+                                                        <th>Broj ljudi</th>
+                                                        <th></th>
+                                                      </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                        <tr *ngFor="let a of aktuelne_rezervacije">
+                                                            <td>{{a.gost}}</td>
+                                                            <td>{{a.datum_vreme_pocetka}}</td>
+                                                            <td>{{a.broj_ljudi}}</td>
+                                                            <td>
+                                                                <button class="btn btn-info" (click)="vise(a._id)">Više</button>
+                                                            </td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </section>
+                    </div>
+                    <br>
+                    <div class="col-12 col-md-12 col-lg-12" *ngIf="show_more == true">
+                        <div class="card bg-secondary shadow-soft border-light p-4">
+                            <div class="text-center pb-0">
+                                <h2 class="mb-0 h5">Više</h2>                               
+                            </div>
+                            <div class="card-body text-center">
+                                <div class="form-group">
+                                    <div class="row">
+                                        <canvas #canvas style="border: 1px " width="700" height="350">
+                                            Fallback content
+                                        </canvas>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+</body>

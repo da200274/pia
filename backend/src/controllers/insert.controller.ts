@@ -16,7 +16,7 @@ export class InsertController{
     }
 
     add_restaurant = (req: express.Request, res: express.Response)=>{
-        const { naziv, tip, adresa, kratak_opis, kontakt, raspored_stolova, meni, toalet, kuhinja, recenzije, mapa } = req.body;
+        const { naziv, tip, adresa, kratak_opis, kontakt, raspored_stolova, meni, toalet, kuhinja, radno_vreme, recenzije, mapa } = req.body;
         const restoran = new RestoranM({
             naziv,
             tip,
@@ -26,6 +26,7 @@ export class InsertController{
             raspored_stolova,
             toalet,
             kuhinja,
+            radno_vreme,
             meni,
             recenzije,
             mapa
@@ -39,8 +40,9 @@ export class InsertController{
     }
 
     add_reservation = (req: express.Request, res: express.Response)=>{
-        const { naziv_restorana, gost, datum_vreme_pocetka, sto_id, status, konobar, adresa } = req.body;
+        const { naziv_restorana, gost, datum_vreme_pocetka, status, konobar, adresa, broj_ljudi } = req.body;
         let komentar = ""
+        let sto_id = ""
         let ocena = 0
         let datum_vreme_kraja = new Date(datum_vreme_pocetka)
         datum_vreme_kraja.setHours(datum_vreme_kraja.getHours() + 3)
@@ -54,6 +56,7 @@ export class InsertController{
             datum_vreme_pocetka,
             datum_vreme_kraja,
             adresa,
+            broj_ljudi,
             komentar,
             ocena
         });

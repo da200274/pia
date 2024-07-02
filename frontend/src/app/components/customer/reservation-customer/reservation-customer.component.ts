@@ -40,8 +40,6 @@ export class ReservationCustomerComponent implements OnInit{
   datum: Date|string = ""
   vreme: string = ""
   sp: string[] = []
-  showed: boolean = false;
-  selected_table: string = ""
 
   rezervacije: Rezervacija[] = []
   slobodni_stolovi: string[] = []
@@ -75,7 +73,6 @@ export class ReservationCustomerComponent implements OnInit{
     console.log(this.zauzeti_stolovi)
     this.reserveServis.get_tables(this.restoran_ime, this.kap).subscribe(
       stolovi=>{
-        this.showed = true
         let svi_stolovi: Sto[] = []
         if(stolovi) svi_stolovi = stolovi
         
@@ -90,7 +87,9 @@ export class ReservationCustomerComponent implements OnInit{
 
         if(this.slobodni_stolovi.length == 0){
           this.message = "Ne postoji slobodan sto u tom terminu."
-          this.showed = false
+        }
+        else{
+          this.zavrsi()
         }
       }
     )
@@ -99,7 +98,7 @@ export class ReservationCustomerComponent implements OnInit{
   zavrsi(){
     let temp = localStorage.getItem("profil")
     if(temp){
-      this.insertServis.add_reservation(this.restoran_ime, temp, this.selected_table, this.datum_vreme, this.restoran_adresa).subscribe(
+      this.insertServis.add_reservation(this.restoran_ime, temp, this.datum_vreme, this.restoran_adresa, this.kap).subscribe(
         msg=>{
           if(msg.poruka == "ok"){
             this.router.navigate(['restaurants'])

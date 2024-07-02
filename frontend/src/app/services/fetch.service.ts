@@ -67,4 +67,15 @@ export class FetchService {
     }
     return this.http.post<Rezervacija[]>(`${this.backendUrl}/get/current_reservations`, data);
   }
+
+  reservations_for_restaurant(naziv: string){
+    const data = {
+      naziv_restorana: naziv
+    }
+    return this.http.post<Rezervacija[]>(`${this.backendUrl}/get/reservations_for_restaurant`, data);
+  }
+
+  count_customers(){
+    return this.http.post<number>(`${this.backendUrl}/get/count_customers`, "");
+  }
 }

@@ -8,6 +8,7 @@ export class Rezervacija{
     datum_vreme_kraja: Date = new Date()
     status: number = 0;
     adresa: string = ""
+    broj_ljudi: number = 0;
     komentar: string = ""
     ocena: number = 0
 }

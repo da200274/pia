@@ -28,6 +28,7 @@ import { UpdateDataComponent } from './components/update-data/update-data.compon
 import { ReservationCustomerComponent } from './components/customer/reservation-customer/reservation-customer.component';
 import { ReservationsComponent } from './components/customer/reservations/reservations.component';
 import { ReviewComponent } from './components/customer/review/review.component';
+import { WaiterReservationsComponent } from './components/waiter/waiter-reservations/waiter-reservations.component';
 
 @NgModule({
   declarations: [
@@ -54,7 +55,8 @@ import { ReviewComponent } from './components/customer/review/review.component';
     UpdateDataComponent,
     ReservationCustomerComponent,
     ReservationsComponent,
-    ReviewComponent
+    ReviewComponent,
+    WaiterReservationsComponent
   ],
   imports: [
     BrowserModule,

@@ -39,4 +39,12 @@ getRouter.route("/current_reservations").post(
     (req,res)=>new GetController().current_reservations(req,res)
 )
 
+getRouter.route("/reservations_for_restaurant").post(
+    (req,res)=>new GetController().reservations_for_restaurant(req,res)
+)
+
+getRouter.route("/count_customers").post(
+    (req,res)=>new GetController().count_customers(req,res)
+)
+
 export default getRouter;

@@ -21,19 +21,6 @@ export class ReserveController{
         }).catch((err)=>{
             console.log(err)
         })
-
-        /*
-        $or: [
-                 { $and: [
-                    {datum_vreme_pocetka: { $lte: vreme_start },
-                    datum_vreme_kraja: {$gte: vreme_start}}
-                ]},
-                { $and: [
-                    {datum_vreme_pocetka: { $lte: vreme_end },
-                    datum_vreme_kraja: {$gte: vreme_end}}
-                ]}
-                ]
-        */
     }
 
     get_tables = (req: express.Request, res: express.Response)=>{
@@ -48,6 +35,42 @@ export class ReserveController{
             let filteredTables = restoran.raspored_stolova.stolovi.filter((sto) => sto.kapacitet >= kapacitet);
 
             res.json(filteredTables);
+        }).catch((err) => {
+            console.log(err);
+            res.status(500).json({ message: "Internal server error" });
+        });
+    }
+
+    get_last_day = (req: express.Request, res: express.Response)=>{
+        let last_day = new Date()
+        last_day.setDate(last_day.getDate() - 1);
+        
+        RezervacijaM.countDocuments({ kreirana_u: { $gte: last_day } }).then((cnt) => {
+            res.json(cnt);
+        }).catch((err) => {
+            console.log(err);
+            res.status(500).json({ message: "Internal server error" });
+        });
+    }
+
+    get_last_week = (req: express.Request, res: express.Response)=>{
+        let last_week = new Date()
+        last_week.setDate(last_week.getDate() - 7);
+        
+        RezervacijaM.countDocuments({ kreirana_u: { $gte: last_week } }).then((cnt) => {
+            res.json(cnt);
+        }).catch((err) => {
+            console.log(err);
+            res.status(500).json({ message: "Internal server error" });
+        });
+    }
+
+    get_last_month = (req: express.Request, res: express.Response)=>{
+        let last_month = new Date()
+        last_month.setMonth(last_month.getMonth() - 1);
+        
+        RezervacijaM.countDocuments({ kreirana_u: { $gte: last_month } }).then((cnt) => {
+            res.json(cnt);
         }).catch((err) => {
             console.log(err);
             res.status(500).json({ message: "Internal server error" });

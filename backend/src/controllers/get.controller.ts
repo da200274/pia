@@ -96,4 +96,25 @@ export class GetController{
             console.log(err)
         })
     }
+
+    reservations_for_restaurant = (req: express.Request, res: express.Response)=>{
+        let naziv = req.body.naziv_restorana
+        
+        RezervacijaM.find({naziv_restorana: naziv, status: 0})
+        .sort({datum_vreme_pocetka : -1})
+        .then((reservations)=>{
+            res.json(reservations)
+        }).catch((err)=>{
+            console.log(err)
+        })
+    }
+
+    count_customers = (req: express.Request, res: express.Response)=>{
+        KorisnikM.countDocuments({tip : "musterija"})
+        .then((cnt)=>{
+            res.json(cnt)
+        }).catch((err)=>{
+            console.log(err)
+        })
+    }
 }
