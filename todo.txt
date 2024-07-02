@@ -1,0 +1,10 @@
+generisati podatke za sve modele koje imamo
+prikaz datuma i vremena malo prilagoditi
+stolovi moraju da budu okrugli
+provera pri rezervaciji ako restoran ne radi toga dana
+otkazivanje rezervacije -> moze da se uradi na frontu provera
+kriptovana lozinka
+ispis restorana kod admina
+provera da li je raspored dobar
+ubacivanje unosa za radno vreme
+odblokirati gosta nakon 3 nedolaska

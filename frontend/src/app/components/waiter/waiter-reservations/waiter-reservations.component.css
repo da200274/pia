@@ -1,0 +1,13 @@
+.profile-image-small img {
+    width: 60px; /* Set the desired width */
+    height: 60px; /* Set the desired height */
+    object-fit: cover; /* Ensure the image covers the entire area without distortion */
+    border-radius: 50%; /* Optional: Make the image round */
+}
+
+
+.divider{
+    width:5px;
+    height:auto;
+    display:inline-block;
+}

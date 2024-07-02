@@ -26,12 +26,12 @@
                                                       </tr>
                                                     </thead>
                                                     <tbody>
-                                                        <tr *ngFor="let a of aktuelne_rezervacije">
+                                                        <tr *ngFor="let a of aktuelne_rezervacije; let i = index">
                                                             <td>{{a.gost}}</td>
                                                             <td>{{a.datum_vreme_pocetka}}</td>
                                                             <td>{{a.broj_ljudi}}</td>
                                                             <td>
-                                                                <button class="btn btn-info" (click)="vise(a._id)">Više</button>
+                                                                <button class="btn btn-info" (click)="vise(i)">Više</button>
                                                             </td>
                                                         </tr>
                                                     </tbody>
@@ -50,6 +50,18 @@
                                 <h2 class="mb-0 h5">Više</h2>                               
                             </div>
                             <div class="card-body text-center">
+                                <div class="text-center pb-0">
+                                    <label for="table-select">Izaberite sto:</label>
+                                    <select name="pets" id="table-select" [(ngModel)]="sto_selected">
+                                        <option *ngFor="let s of slobodni_stolovi" [value]="s">{{s}}</option>
+                                      </select>
+                                    <br>
+                                    <br>
+                                    <button (click)="accept()" class="btn btn-block btn-success">Prihvati</button>
+                                    <div class="divider bg-secondary"></div>
+                                    <button (click)="reject()" class="btn btn-block btn-danger">Odbij</button>
+                                </div>
+                                <br>
                                 <div class="form-group">
                                     <div class="row">
                                         <canvas #canvas style="border: 1px " width="700" height="350">
