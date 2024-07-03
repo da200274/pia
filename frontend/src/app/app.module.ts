@@ -29,7 +29,7 @@ import { ReservationCustomerComponent } from './components/customer/reservation-
 import { ReservationsComponent } from './components/customer/reservations/reservations.component';
 import { ReviewComponent } from './components/customer/review/review.component';
 import { WaiterReservationsComponent } from './components/waiter/waiter-reservations/waiter-reservations.component';
-import { WaiterMyReservationsComponent } from './waiter-my-reservations/waiter-my-reservations.component';
+import { WaiterMyReservationsComponent } from './components/waiter/waiter-my-reservations/waiter-my-reservations.component';
 
 @NgModule({
   declarations: [

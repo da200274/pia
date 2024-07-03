@@ -1,1 +1,53 @@
-<p>waiter-my-reservations works!</p>
+<body>
+    <main>
+        <!-- Section -->
+        <section class="min-vh-100 d-flex align-items-center">
+            <div class="container">
+                <div class="row justify-content-center">
+                    <div class="col-12 col-md-12 col-lg-12">
+                        <section class="section section-lg pt-0">
+                            <div class="container">
+                                <div class="row">
+                                    <div class="col">
+                                        <div class="card bg-secondary shadow-soft border-light p-4">
+                                            <div class="text-center pb-0">
+                                                <h2 class="mb-0 h5">Moja zaduženja</h2>
+                                            </div>
+                                            <br>
+                                            <div class="row">
+                                                <table class="table table-striped">
+                                                    <thead class="thead-dark">
+                                                      <tr>
+                                                        <th>Gost</th>
+                                                        <th>Datum</th>
+                                                        <th>Broj ljudi</th>
+                                                        <th>Sto</th>
+                                                        <th></th>
+                                                      </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                        <tr *ngFor="let a of aktuelne_rezervacije; let i = index">
+                                                            <td>{{a.gost}}</td>
+                                                            <td>{{a.datum_vreme_pocetka}}</td>
+                                                            <td>{{a.broj_ljudi}}</td>
+                                                            <td>{{a.sto_id}}</td>
+                                                            <td *ngIf="compare(i) == true">
+                                                                <button class="btn btn-info" (click)="come(i)">Stigli</button>
+                                                                <div class="divider bg-warning"></div>
+                                                                <button class="btn btn-info" (click)="not_come(i)">Nisu stigli</button>
+                                                            </td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </section>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+</body>

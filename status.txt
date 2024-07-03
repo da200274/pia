@@ -1,0 +1,15 @@
+korisnik:
+
+0 - poslat zahtev
+1 - odobren zahtev - korisnik
+2
+3 - admin
+4 - odbijen zahtev
+5 - blokiran
+
+rezervacija:
+-1 - odbijena rezervacija
+0 - kreirana rezervacija
+1 -prihvacena rezervacija
+2 - dosao gost
+3 - nije dosao gost

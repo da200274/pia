@@ -19,6 +19,7 @@ import { ReservationCustomerComponent } from './components/customer/reservation-
 import { ReservationsComponent } from './components/customer/reservations/reservations.component';
 import { ReviewComponent } from './components/customer/review/review.component';
 import { WaiterReservationsComponent } from './components/waiter/waiter-reservations/waiter-reservations.component';
+import { WaiterMyReservationsComponent } from './components/waiter/waiter-my-reservations/waiter-my-reservations.component';
 
 const routes: Routes = [
   {path:"", component:HomeComponent},
@@ -39,7 +40,8 @@ const routes: Routes = [
   {path:"reservation_customer", component:ReservationCustomerComponent},
   {path:"reservations", component:ReservationsComponent},
   {path:"review", component:ReviewComponent},
-  {path:"waiter_reservations", component:WaiterReservationsComponent}
+  {path:"waiter_reservations", component:WaiterReservationsComponent},
+  {path:"waiter_my_reservations", component:WaiterMyReservationsComponent}
 ];
 
 @NgModule({

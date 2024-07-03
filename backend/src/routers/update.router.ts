@@ -39,5 +39,13 @@ updateRouter.route("/accept_reservation").post(
     (req,res)=>new UpdateController().accept_reservation(req,res)
 )
 
+updateRouter.route("/valid_reservation").post(
+    (req,res)=>new UpdateController().valid_reservation(req,res)
+)
+
+updateRouter.route("/invalid_reservation").post(
+    (req,res)=>new UpdateController().invalid_reservation(req,res)
+)
+
 
 export default updateRouter;

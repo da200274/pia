@@ -23,7 +23,7 @@ export class HeaderWaiterComponent implements OnInit{
     this.router.navigate(['login']);
   }
 
-  goto_profil(){
+  goto_profile(){
     this.router.navigate(['profil']);
   }
 
@@ -31,11 +31,15 @@ export class HeaderWaiterComponent implements OnInit{
     this.router.navigate(['change_password'])
   }
 
-  goto_dostave(){
+  goto_delivery(){
     this.router.navigate(['waiter_orders'])
   }
 
-  goto_rezervacije(){
+  goto_reservations(){
     this.router.navigate(['waiter_reservations'])
+  }
+
+  goto_my_reservations(){
+    this.router.navigate(['waiter_my_reservations'])
   }
 }

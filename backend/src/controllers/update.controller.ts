@@ -93,4 +93,35 @@ export class UpdateController{
             console.log(err)
         })
     }
+
+    valid_reservation = (req: express.Request, res: express.Response)=>{
+        let idR = req.body.id
+        RezervacijaM.updateOne({_id: idR}, { status: 2}).then((ok)=>{
+            res.json({poruka: "ok"})
+        }).catch((err)=>{
+            console.log(err)
+        })
+    }
+
+    invalid_reservation = async (req: express.Request, res: express.Response)=>{
+        try{
+            let idR = req.body.id
+            let korime = req.body.korime
+            await RezervacijaM.updateOne({_id: idR}, { status: 3})
+            const user = await KorisnikM.findOneAndUpdate(
+                {korime: korime},
+                {$inc: {nedolazak: 1}},
+                {new: true}
+            );
+
+            if (user?.nedolazak && user.nedolazak >= 3) {
+                await KorisnikM.updateOne({korime: korime}, {status: 5});
+            }
+
+            res.json({poruka: "ok"});
+        } catch (err) {
+            console.log(err);
+            res.status(500).json({poruka: "error", error: err});
+        }
+    }
 }
