@@ -19,7 +19,7 @@
                                                     <thead class="thead-dark">
                                                       <tr>
                                                         <th>Gost</th>
-                                                        <th>Datum</th>
+                                                        <th>Datum i vreme</th>
                                                         <th>Broj ljudi</th>
                                                         <th>Sto</th>
                                                         <th></th>
@@ -28,7 +28,7 @@
                                                     <tbody>
                                                         <tr *ngFor="let a of aktuelne_rezervacije; let i = index">
                                                             <td>{{a.gost}}</td>
-                                                            <td>{{a.datum_vreme_pocetka}}</td>
+                                                            <td>{{transform(a.datum_vreme_pocetka)}}</td>
                                                             <td>{{a.broj_ljudi}}</td>
                                                             <td>{{a.sto_id}}</td>
                                                             <td *ngIf="compare(i) == true">

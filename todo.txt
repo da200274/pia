@@ -1,10 +1,17 @@
-generisati podatke za sve modele koje imamo
-prikaz datuma i vremena malo prilagoditi
-stolovi moraju da budu okrugli
-provera pri rezervaciji ako restoran ne radi toga dana
-otkazivanje rezervacije -> moze da se uradi na frontu provera
-kriptovana lozinka
-ispis restorana kod admina
-provera da li je raspored dobar
-ubacivanje unosa za radno vreme
-odblokirati gosta nakon 3 nedolaska
+generalno: 
+    generisati podatke za sve modele koje imamo
+    trenutno angazovani konobari
+
+admin: 
+    odblokirati gosta nakon 3 nedolaska
+    stolovi moraju da budu okrugli
+
+konobar:
+    stolovi moraju da budu okrugli
+    statistika
+
+gost: 
+    provera pri rezervaciji ako restoran ne radi toga dana - TEST
+    otkazivanje rezervacije -> moze da se uradi na frontu provera
+    kriptovana lozinka
+    dostavljanje hrane, promena statusa

@@ -12,7 +12,8 @@ export class Restoran {
     mapa: string = ""
     kontakt: string = "";
     kuhinja: Kuhinja = new Kuhinja();
-    radno_vreme: string = "";
+    radno_vreme_pocetak:Date = new Date();
+    radno_vreme_kraj: Date = new Date()
     toalet: Toalet = new Toalet()
     raspored_stolova: Raspored = new Raspored();
     meni: Meni[] = [];

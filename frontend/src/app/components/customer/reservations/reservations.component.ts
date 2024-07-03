@@ -1,3 +1,4 @@
+import { DatePipe } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Rezervacija } from 'src/app/models/rezervacija';
@@ -12,8 +13,13 @@ export class ReservationsComponent implements OnInit{
 
   constructor(
     private fetchServis: FetchService,
-    private router: Router
+    private router: Router,
+    private datePipe: DatePipe
   ){}
+
+  transform(datum: Date){
+    return this.datePipe.transform(datum, 'dd-MM-yyyy HH:mm') || '';
+  }
 
   ngOnInit(): void {
     let temp = localStorage.getItem("profil")

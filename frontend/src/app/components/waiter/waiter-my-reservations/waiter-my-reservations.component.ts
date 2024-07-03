@@ -1,8 +1,8 @@
+import { DatePipe } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { Korisnik } from 'src/app/models/korisnik';
 import { Rezervacija } from 'src/app/models/rezervacija';
 import { FetchWaiterService } from 'src/app/services/fetch-waiter.service';
-import { FetchService } from 'src/app/services/fetch.service';
 
 @Component({
   selector: 'app-waiter-my-reservations',
@@ -12,7 +12,8 @@ import { FetchService } from 'src/app/services/fetch.service';
 export class WaiterMyReservationsComponent implements OnInit{
 
   constructor(
-    private fetchServis: FetchWaiterService
+    private fetchServis: FetchWaiterService,
+    private datePipe: DatePipe
   ){}
 
   ngOnInit(): void {
@@ -59,6 +60,10 @@ export class WaiterMyReservationsComponent implements OnInit{
         }
       }
     )
+  }
+
+  transform(datum: Date){
+    return this.datePipe.transform(datum, 'dd-MM-yyyy HH:mm') || '';
   }
   
   aktuelne_rezervacije: Rezervacija[] = []

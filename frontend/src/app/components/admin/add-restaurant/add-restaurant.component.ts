@@ -117,6 +117,10 @@ export class AddRestaurantComponent implements OnInit{
 
   dodaj_restoran(){
     this.check_constraints();
+    let datum = "2024-07-03"
+    let radno_vreme_pocetak = new Date(`${datum}T${this.vreme1}Z`);
+    let radno_vreme_kraj= new Date(`${datum}T${this.vreme2}Z`);
+
     if(this.message == ""){
       const data = {
         naziv: this.naziv,
@@ -125,7 +129,8 @@ export class AddRestaurantComponent implements OnInit{
         kontakt: this.kontakt,
         kratak_opis: this.kratak_opis,
         mapa: this.mapa,
-        radno_vreme: this.radno_vreme,
+        radno_vreme_pocetak: radno_vreme_pocetak,
+        radno_vreme_kraj: radno_vreme_kraj,
         raspored_stolova: this.file1Data.raspored_stolova,
         meni: this.file1Data.meni,
         kuhinja: this.file1Data.kuhinja,
@@ -143,14 +148,30 @@ export class AddRestaurantComponent implements OnInit{
   }
 
   check_constraints(){
-    if(this.naziv == "" || this.tip == "" || this.adresa == "" || this.kratak_opis == "" || this.kontakt == ""){
+    if(this.naziv == "" || this.tip == "" || this.adresa == "" || this.kratak_opis == "" || this.kontakt == "" || this.vreme1 == "" || this.vreme2 == ""){
       this.message = "Svi podaci su obavezni."
       return
     }
     else if(this.file1Data == null){
       this.message = "Unesite JSON dokument."
       return
+    }else if(this.file1Data.kuhinja == undefined){
+      this.message = "Restoran mora imati kuhinju."
+      return
     }
+    else if(this.file1Data.toalet ==undefined){
+      this.message = "Restoran mora imati toalet."
+      return
+    }
+    else if(this.file1Data.raspored_stolova ==undefined){
+      this.message = "Restoran mora imati stolove."
+      return
+    }
+    else if(this.file1Data.raspored_stolova.stolovi.length < 3){
+      this.message = "Restoran mora imati 3 ili više stolova."
+      return
+    }
+    this.message = ""
   }
 
   naziv: string = ""
@@ -159,8 +180,10 @@ export class AddRestaurantComponent implements OnInit{
   kratak_opis: string = ""
   kontakt: string = ""
   mapa: string = ""
-  radno_vreme: string = ""
   message: string = ""
+
+  vreme1: string = ""
+  vreme2: string = ""
 
   restoran: Restoran = new Restoran()
 }

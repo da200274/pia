@@ -1,3 +1,4 @@
+import { DatePipe } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { Porudzbina } from 'src/app/models/porudzbina';
 import { FetchService } from 'src/app/services/fetch.service';
@@ -9,7 +10,14 @@ import { FetchService } from 'src/app/services/fetch.service';
 })
 export class DeliveryCustomerComponent implements OnInit{
 
-  constructor(private fetchServis: FetchService){}
+  constructor(
+    private fetchServis: FetchService,
+    private datePipe: DatePipe
+  ){}
+
+  transform(datum: Date){
+    return this.datePipe.transform(datum, 'dd-MM-yyyy HH:mm') || '';
+  }
 
   ngOnInit(): void {
     let temp = localStorage.getItem("profil")

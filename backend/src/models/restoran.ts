@@ -59,7 +59,8 @@ const restoranSchema = new mongoose.Schema(
             default: () => ({ stolovi: [] })
         },
         kuhinja: kuhinjaSchema,
-        radno_vreme: String,
+        radno_vreme_pocetak: Date,
+        radno_vreme_kraj: Date,
         toalet: toaletSchema,
         meni: [meniSchema],
         recenzije: [recenzijaSchema]

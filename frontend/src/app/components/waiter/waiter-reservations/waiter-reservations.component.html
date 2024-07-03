@@ -28,7 +28,7 @@
                                                     <tbody>
                                                         <tr *ngFor="let a of aktuelne_rezervacije; let i = index">
                                                             <td>{{a.gost}}</td>
-                                                            <td>{{a.datum_vreme_pocetka}}</td>
+                                                            <td>{{transform(a.datum_vreme_pocetka)}}</td>
                                                             <td>{{a.broj_ljudi}}</td>
                                                             <td>
                                                                 <button class="btn btn-info" (click)="vise(i)">Više</button>

@@ -1,3 +1,4 @@
+import { DatePipe } from '@angular/common';
 import { AfterViewInit, Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { Korisnik } from 'src/app/models/korisnik';
 import { Restoran } from 'src/app/models/restoran';
@@ -16,7 +17,8 @@ export class WaiterReservationsComponent implements OnInit{
   constructor(
     private fetchServis: FetchService,
     private reservationServis: ReserveService,
-    private updateServis: UpdateDataService
+    private updateServis: UpdateDataService,
+    private datePipe: DatePipe
   ){}
 
   ngOnInit(): void {
@@ -169,6 +171,10 @@ export class WaiterReservationsComponent implements OnInit{
         }
       }
     );
+  }
+
+  transform(datum: Date){
+    return this.datePipe.transform(datum, 'dd-MM-yyyy HH:mm') || '';
   }
 
 

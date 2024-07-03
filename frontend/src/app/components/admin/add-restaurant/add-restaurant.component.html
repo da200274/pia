@@ -53,6 +53,22 @@
                                                             </div>
                                                         </div>
                                                         <div class="form-group">
+                                                            <label for="potvrda">Kontakt</label>
+                                                            <div class="input-group mb-4">
+                                                                <input class="form-control" id="pitanje" [(ngModel)]="kontakt" type="text" aria-label="Password" required>
+                                                            </div>
+                                                        </div>
+                                                        <div class="form-group">
+                                                            <label for="vreme1">Početak radnog vremena:</label>
+                                                            <input class="form-control" type="time" id="vreme1" name="datetime-local" [(ngModel)]="vreme1" required>
+                                                        </div>
+                                                        <br>
+                                                        <div class="form-group">
+                                                            <label for="vreme2">Kraj radnog vremena:</label>
+                                                            <input class="form-control" type="time" id="vreme2" name="datetime-local" [(ngModel)]="vreme2" required>
+                                                        </div>
+                                                        <br>
+                                                        <div class="form-group">
                                                             <label for="potvrda">Mapa</label>
                                                             <div class="input-group mb-4">
                                                                 <input class="form-control" id="pitanje" [(ngModel)]="mapa" type="text" aria-label="Password" required>

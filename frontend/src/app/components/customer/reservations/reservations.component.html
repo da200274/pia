@@ -61,7 +61,7 @@
                                             </thead>
                                             <tbody>
                                                 <tr *ngFor="let a of arhiva">
-                                                    <td>{{a.datum_vreme_pocetka}}</td>
+                                                    <td>{{transform(a.datum_vreme_pocetka)}}</td>
                                                     <td>{{a.naziv_restorana}}</td>
                                                     <td>{{a.komentar}}</td>
                                                     <td>{{a.ocena}}</td>

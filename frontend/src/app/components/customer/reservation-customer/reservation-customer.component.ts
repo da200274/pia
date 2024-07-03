@@ -28,6 +28,7 @@ export class ReservationCustomerComponent implements OnInit{
     this.fetchServis.get_restaurant(this.restoran_ime).subscribe(
       res=>{
         if(res){
+          this.restoran = res
           this.restoran_adresa = res.adresa
         }
       }
@@ -46,12 +47,40 @@ export class ReservationCustomerComponent implements OnInit{
   zauzeti_stolovi: string[] = []
   restoran_ime: string = ""
   restoran_adresa: string = ""
+  restoran: Restoran = new Restoran()
   datum_vreme: Date|string = ""
 
 
   rezervisi(){
 
     this.check_constraints()
+    if(this.vreme != ""){
+      let datum = "2024-07-03"
+      let provera_vremena = new Date(`${datum}T${this.vreme}Z`);
+      
+      let proveraHours = provera_vremena.getUTCHours();
+      let proveraMinutes = provera_vremena.getUTCMinutes();
+
+      let pocetakHours = this.restoran.radno_vreme_pocetak.getUTCHours();
+      let pocetakMinutes = this.restoran.radno_vreme_pocetak.getUTCMinutes();
+
+      let krajHours = this.restoran.radno_vreme_kraj.getUTCHours();
+      let krajMinutes = this.restoran.radno_vreme_kraj.getUTCMinutes();
+
+      let proveraTotalMinutes = proveraHours * 60 + proveraMinutes;
+      let pocetakTotalMinutes = pocetakHours * 60 + pocetakMinutes;
+      let krajTotalMinutes = krajHours * 60 + krajMinutes
+      if(krajTotalMinutes < pocetakTotalMinutes){
+        krajTotalMinutes += (60 * (24 - pocetakHours + krajHours) - pocetakMinutes + krajMinutes)
+      }
+
+      if(pocetakTotalMinutes > proveraTotalMinutes){
+        this.message = "Restoran nije otvoren u tom periodu"
+      }
+      else if(krajTotalMinutes < proveraTotalMinutes){
+        this.message = "Restoran je ili zatvoren ili će biti zatvoren u toku opsluživanja rezervcije"
+      }
+    }
     if(this.message != ''){
       return;
     }
