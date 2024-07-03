@@ -31,4 +31,13 @@ updateRouter.route("/reviewed").post(
     (req,res)=>new UpdateController().review(req,res)
 )
 
+updateRouter.route("/reject_reservation").post(
+    (req,res)=>new UpdateController().reject_reservation(req,res)
+)
+
+updateRouter.route("/accept_reservation").post(
+    (req,res)=>new UpdateController().accept_reservation(req,res)
+)
+
+
 export default updateRouter;

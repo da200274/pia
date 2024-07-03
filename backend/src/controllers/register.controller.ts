@@ -31,7 +31,8 @@ export class RegisterController{
             tip: tipP, 
             profilna: profilnaP, 
             status: 0,
-            radi_u: radi_uP
+            radi_u: radi_uP,
+            nedolazak: 0
         };
         
         const existingUser = await KorisnikM.findOne({

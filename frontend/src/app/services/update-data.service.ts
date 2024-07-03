@@ -64,4 +64,22 @@ export class UpdateDataService {
     }
     return this.http.post<Poruka>(`${this.backendUrl}/update/reviewed`, data);
   }
+
+  accept_reservation(konobar: string, _id: string, sto_id: string){
+    
+    const data = {
+      konobar: konobar,
+      id: _id,
+      sto: sto_id
+    }
+    return this.http.post<Poruka>(`${this.backendUrl}/update/accept_reservation`, data);
+  }
+
+  reject_reservation(_id: string){
+    const data = {
+      id: _id
+    }
+    console.log(data)
+    return this.http.post<Poruka>(`${this.backendUrl}/update/reject_reservation`, data);
+  }
 }

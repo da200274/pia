@@ -13,5 +13,6 @@ export class Korisnik{
     profilna: string = "";
     kartica: string = ""
     tip: string = "";
-    radi_u: string = ""
+    radi_u: string = "";
+    nedolazak: number = 0
 }

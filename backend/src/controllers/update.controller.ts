@@ -72,4 +72,25 @@ export class UpdateController{
             console.log(err)
         })
     }
+
+    accept_reservation = (req: express.Request, res: express.Response)=>{
+        let idR = req.body.id
+        let sto_id = req.body.sto
+        let konobar = req.body.konobar
+        RezervacijaM.updateOne({_id: idR}, { sto_id: sto_id, status: 1, konobar: konobar}).then((ok)=>{
+            res.json({poruka: "ok"})
+        }).catch((err)=>{
+            console.log(err)
+        })
+    }
+
+    reject_reservation = (req: express.Request, res: express.Response)=>{
+        let idR = req.body.id
+        let komentar = req.body.komentar
+        RezervacijaM.updateOne({_id: idR}, { status: -1}).then((ok)=>{
+            res.json({poruka: "ok"})
+        }).catch((err)=>{
+            console.log(err)
+        })
+    }
 }

@@ -16,7 +16,8 @@ const korisnikSchema = new mongoose.Schema(
         kartica: String,
         status: Number,
         profilna: String,
-        radi_u: String
+        radi_u: String,
+        nedolazak: Number
     },{
       versionKey:false  
     }
