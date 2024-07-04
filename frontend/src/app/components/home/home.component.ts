@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
+import { Korisnik } from 'src/app/models/korisnik';
 import { Restoran } from 'src/app/models/restoran';
 import { FetchService } from 'src/app/services/fetch.service';
 import { ReserveService } from 'src/app/services/reserve.service';
@@ -62,6 +63,20 @@ export class HomeComponent implements OnInit{
         if(mesec) this.broj_rezervacija_mesec = mesec
       }
     )
+
+    this.fetchServis.all_waiters().subscribe(
+      ws=>{
+        if(ws) this.waiters = ws
+        for(let i = 0; i <this.restaurants.length; i++){
+          this.restaurants[i].radnici = []
+          for(let j = 0; j < this.waiters.length; j++){
+            if(this.restaurants[i].naziv == this.waiters[j].radi_u){
+              this.restaurants[i].radnici.push(this.waiters[j])
+            }
+          }
+        }
+      }
+    )
   }
 
   sortData(column: string): void {
@@ -96,6 +111,7 @@ export class HomeComponent implements OnInit{
   searchForm: FormGroup;
 
   restaurants: Restoran[] = []
+  waiters: Korisnik[] = []
   sortDirection: 'asc' | 'desc' = 'asc';
   sortColumn: string = '';
   searched_restaurants: Restoran[] = []

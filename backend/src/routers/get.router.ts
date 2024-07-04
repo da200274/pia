@@ -11,6 +11,10 @@ getRouter.route("/all_pending_requests").post(
     (req,res)=>new GetController().get_pending_requests(req,res)
 )
 
+getRouter.route("/all_waiters").post(
+    (req,res)=>new GetController().all_waiters(req,res)
+)
+
 getRouter.route("/user_by_korime").post(
     (req,res)=>new GetController().user_by_korime(req,res)
 )

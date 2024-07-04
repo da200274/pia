@@ -21,6 +21,10 @@ export class FetchService {
     return this.http.post<Korisnik[]>(`${this.backendUrl}/get/all_pending_requests`, " ");
   }
 
+  all_waiters(){
+    return this.http.post<Korisnik[]>(`${this.backendUrl}/get/all_waiters`, " ");
+  }
+
   user_by_korime(korime: string){
     const data = {
       korime: korime

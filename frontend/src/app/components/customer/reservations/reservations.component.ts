@@ -18,7 +18,15 @@ export class ReservationsComponent implements OnInit{
   ){}
 
   transform(datum: Date){
-    return this.datePipe.transform(datum, 'dd-MM-yyyy HH:mm') || '';
+    const dateStr = new Date(datum).toISOString();
+    
+    const [datePart, timePart] = dateStr.split('T');
+    const [hours, minutes] = timePart.split(':');
+    
+    const formattedDate = this.datePipe.transform(datePart, 'dd-MM-yyyy') || '';
+    const formattedTime = `${hours}:${minutes}`;
+    
+    return `${formattedDate} ${formattedTime}`;
   }
 
   ngOnInit(): void {

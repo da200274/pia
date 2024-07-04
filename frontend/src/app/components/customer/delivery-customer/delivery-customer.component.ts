@@ -1,7 +1,9 @@
 import { DatePipe } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
+import { firstValueFrom } from 'rxjs';
 import { Porudzbina } from 'src/app/models/porudzbina';
 import { FetchService } from 'src/app/services/fetch.service';
+import { UpdateDataService } from 'src/app/services/update-data.service';
 
 @Component({
   selector: 'app-delivery-customer',
@@ -12,11 +14,20 @@ export class DeliveryCustomerComponent implements OnInit{
 
   constructor(
     private fetchServis: FetchService,
+    private updateServis: UpdateDataService,
     private datePipe: DatePipe
   ){}
 
   transform(datum: Date){
-    return this.datePipe.transform(datum, 'dd-MM-yyyy HH:mm') || '';
+    const dateStr = new Date(datum).toISOString();
+    
+    const [datePart, timePart] = dateStr.split('T');
+    const [hours, minutes] = timePart.split(':');
+    
+    const formattedDate = this.datePipe.transform(datePart, 'dd-MM-yyyy') || '';
+    const formattedTime = `${hours}:${minutes}`;
+    
+    return `${formattedDate} ${formattedTime}`;
   }
 
   ngOnInit(): void {
@@ -32,11 +43,29 @@ export class DeliveryCustomerComponent implements OnInit{
     this.dohvati_arhivu()
   }
 
-  dohvati_aktuelne(){
+  async dohvati_aktuelne(){
     this.fetchServis.all_active_orders(this.korime).subscribe(
-      aktivne=>{
+      async aktivne=>{
         if(aktivne){
-          this.aktuelne_porudzbine = aktivne
+          for(let i = 0; i < aktivne.length; i++){
+            let updated = new Date(aktivne[i].azurirana_u)
+            let now = new Date()
+            
+            updated.setMinutes(updated.getMinutes() + aktivne[i].vreme_dostave)
+
+            console.log(updated)
+            console.log(now)
+            if(updated <= now){
+              try {
+                await firstValueFrom(this.updateServis.delivered_order(aktivne[i]._id));
+              } catch (error) {
+                console.error("An error occurred while delivering the order:", error);
+              }
+            }
+            else{
+              this.aktuelne_porudzbine.push(aktivne[i])
+            }
+          }
         }
       }
     )

@@ -41,6 +41,9 @@
                                               <span *ngIf="sortDirection === 'desc'">▼</span>
                                             </span>
                                           </th>
+                                          <th>
+                                            Konobari
+                                          </th>
                                       </tr>
                                     </thead>
                                     <tbody>
@@ -49,6 +52,15 @@
                                         <td>{{r.naziv}}</td>
                                         <td>{{r.adresa}}</td>
                                         <td>{{r.tip}}</td>
+                                        <td>
+                                            <table>
+                                                <tr *ngFor="let k of r.radnici">
+                                                    <td>{{k.ime}}</td>
+                                                    <td>{{k.prezime}}</td>
+                                                </tr>
+                                            </table>
+
+                                        </td>
                                       </tr>
                                     </tbody>
                                   </table>

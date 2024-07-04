@@ -22,6 +22,7 @@ import { ReservationsComponent } from './components/customer/reservations/reserv
 import { ReviewComponent } from './components/customer/review/review.component';
 import { WaiterReservationsComponent } from './components/waiter/waiter-reservations/waiter-reservations.component';
 import { WaiterMyReservationsComponent } from './components/waiter/waiter-my-reservations/waiter-my-reservations.component';
+import { ChartsComponent } from './components/charts/charts/charts.component';
 
 const routes: Routes = [
   {path:"", component:HomeComponent},
@@ -43,7 +44,8 @@ const routes: Routes = [
   {path:"reservations", component:ReservationsComponent},
   {path:"review", component:ReviewComponent},
   {path:"waiter_reservations", component:WaiterReservationsComponent},
-  {path:"waiter_my_reservations", component:WaiterMyReservationsComponent}
+  {path:"waiter_my_reservations", component:WaiterMyReservationsComponent},
+  {path:"charts", component: ChartsComponent}
 ];
 
 @NgModule({

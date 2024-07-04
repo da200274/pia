@@ -62,6 +62,15 @@ export class UpdateController{
         })
     }
 
+    deliver_order = (req: express.Request, res: express.Response)=>{
+        let idP = req.body.id
+        PorudzbinaM.updateOne({_id: idP}, {status: 2}).then((ok)=>{
+            res.json({poruka: "ok"})
+        }).catch((err)=>{
+            console.log(err)
+        })
+    }
+
     review = (req: express.Request, res: express.Response)=>{
         let idR = req.body.id
         let komentar = req.body.komentar

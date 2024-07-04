@@ -1,3 +1,4 @@
+import { Korisnik } from "./korisnik";
 import { Kuhinja } from "./kuhinja";
 import { Meni } from "./meni";
 import { Raspored } from "./raspored";
@@ -18,4 +19,5 @@ export class Restoran {
     raspored_stolova: Raspored = new Raspored();
     meni: Meni[] = [];
     recenzije: Recenzija[] = [];
+    radnici: Korisnik[] = []
 }

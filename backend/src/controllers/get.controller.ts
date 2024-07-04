@@ -22,6 +22,14 @@ export class GetController{
         })
     }
 
+    all_waiters = (req: express.Request, res: express.Response)=>{
+        KorisnikM.find({tip: "waiter"}).then((waiters)=>{
+            res.json(waiters)
+        }).catch((err)=>{
+            console.log(err)
+        })
+    }
+
     user_by_korime = (req: express.Request, res: express.Response)=>{
         let korime = req.body.korime
         KorisnikM.findOne({korime: korime}).then((user)=>{

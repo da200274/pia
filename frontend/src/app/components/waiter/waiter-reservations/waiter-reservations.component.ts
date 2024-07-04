@@ -36,6 +36,7 @@ export class WaiterReservationsComponent implements OnInit{
       this.fetchServis.reservations_for_restaurant(this.korisnik.radi_u).subscribe(
         res => {
           if (res) this.aktuelne_rezervacije = res;
+          console.log(this.aktuelne_rezervacije)
           this.dohvati_restoran().then(() => resolve());
         },
         error => reject(error)
@@ -174,7 +175,15 @@ export class WaiterReservationsComponent implements OnInit{
   }
 
   transform(datum: Date){
-    return this.datePipe.transform(datum, 'dd-MM-yyyy HH:mm') || '';
+    const dateStr = new Date(datum).toISOString();
+    
+    const [datePart, timePart] = dateStr.split('T');
+    const [hours, minutes] = timePart.split(':');
+    
+    const formattedDate = this.datePipe.transform(datePart, 'dd-MM-yyyy') || '';
+    const formattedTime = `${hours}:${minutes}`;
+    
+    return `${formattedDate} ${formattedTime}`;
   }
 
 

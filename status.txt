@@ -10,6 +10,11 @@ korisnik:
 rezervacija:
 -1 - odbijena rezervacija
 0 - kreirana rezervacija
-1 -prihvacena rezervacija
+1 - prihvacena rezervacija
 2 - dosao gost
 3 - nije dosao gost
+
+dostava:
+0 - kreirana
+1 - u pripremi
+2 - dostavljeno

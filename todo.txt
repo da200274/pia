@@ -1,6 +1,6 @@
 generalno: 
     generisati podatke za sve modele koje imamo
-    trenutno angazovani konobari
+    prikaz recenzija kod restorana
 
 admin: 
     odblokirati gosta nakon 3 nedolaska
@@ -9,9 +9,8 @@ admin:
 konobar:
     stolovi moraju da budu okrugli
     statistika
+    
 
 gost: 
-    provera pri rezervaciji ako restoran ne radi toga dana - TEST
     otkazivanje rezervacije -> moze da se uradi na frontu provera
     kriptovana lozinka
-    dostavljanje hrane, promena statusa

@@ -52,20 +52,22 @@ export class ReservationCustomerComponent implements OnInit{
 
 
   rezervisi(){
-
     this.check_constraints()
     if(this.vreme != ""){
       let datum = "2024-07-03"
       let provera_vremena = new Date(`${datum}T${this.vreme}Z`);
       
-      let proveraHours = provera_vremena.getUTCHours();
-      let proveraMinutes = provera_vremena.getUTCMinutes();
+      let proveraHours = provera_vremena.getHours();
+      let proveraMinutes = provera_vremena.getMinutes();
 
-      let pocetakHours = this.restoran.radno_vreme_pocetak.getUTCHours();
-      let pocetakMinutes = this.restoran.radno_vreme_pocetak.getUTCMinutes();
+      console.log(provera_vremena)
+      console.log(this.restoran.radno_vreme_pocetak)
 
-      let krajHours = this.restoran.radno_vreme_kraj.getUTCHours();
-      let krajMinutes = this.restoran.radno_vreme_kraj.getUTCMinutes();
+      let pocetakHours = new Date(this.restoran.radno_vreme_pocetak).getHours();
+      let pocetakMinutes = new Date(this.restoran.radno_vreme_pocetak).getMinutes();
+
+      let krajHours = new Date(this.restoran.radno_vreme_kraj).getHours();
+      let krajMinutes = new Date(this.restoran.radno_vreme_kraj).getMinutes();
 
       let proveraTotalMinutes = proveraHours * 60 + proveraMinutes;
       let pocetakTotalMinutes = pocetakHours * 60 + pocetakMinutes;

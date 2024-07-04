@@ -30,6 +30,7 @@ import { ReservationsComponent } from './components/customer/reservations/reserv
 import { ReviewComponent } from './components/customer/review/review.component';
 import { WaiterReservationsComponent } from './components/waiter/waiter-reservations/waiter-reservations.component';
 import { WaiterMyReservationsComponent } from './components/waiter/waiter-my-reservations/waiter-my-reservations.component';
+import { ChartsComponent } from './components/charts/charts/charts.component';
 
 @NgModule({
   declarations: [
@@ -58,7 +59,8 @@ import { WaiterMyReservationsComponent } from './components/waiter/waiter-my-res
     ReservationsComponent,
     ReviewComponent,
     WaiterReservationsComponent,
-    WaiterMyReservationsComponent
+    WaiterMyReservationsComponent,
+    ChartsComponent
   ],
   imports: [
     BrowserModule,

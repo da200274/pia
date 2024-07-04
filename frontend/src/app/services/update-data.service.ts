@@ -56,6 +56,13 @@ export class UpdateDataService {
     return this.http.post<Poruka>(`${this.backendUrl}/update/reject_offer`, data);
   }
 
+  delivered_order(_id: string){
+    const data = {
+      id: _id
+    }
+    return this.http.post<Poruka>(`${this.backendUrl}/update/deliver_order`, data);
+  }
+
   give_review(_id: string, opis: string, ocena: number){
     const data = {
       id: _id,

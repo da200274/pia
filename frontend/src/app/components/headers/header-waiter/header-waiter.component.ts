@@ -42,4 +42,8 @@ export class HeaderWaiterComponent implements OnInit{
   goto_my_reservations(){
     this.router.navigate(['waiter_my_reservations'])
   }
+
+  goto_charts(){
+    this.router.navigate(['charts'])
+  }
 }
