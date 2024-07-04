@@ -4,6 +4,7 @@ generalno:
 
 admin: 
     odblokirati gosta nakon 3 nedolaska
+    azuriranje podataka kod korisnika
     stolovi moraju da budu okrugli
 
 konobar:

@@ -12,9 +12,10 @@
                             </div>
                             <div class="card-body text-center">
                                 <div class="form-group">
-                                    <div class="form-group">
+                                    <div class="form-group" *ngIf="fetched == true">
                                         <img [src]="'assets/profile_pics/' + k.profilna" alt="Image Description" class="profile-pic">
                                     </div>
+                                      
                                     <br>
                                     <div class="form-group">
                                         <p>Korisničko ime: {{k.korime}}</p>

@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Korisnik } from 'src/app/models/korisnik';
 import { ChangeDataService } from 'src/app/services/change-data.service';
+import { FetchService } from 'src/app/services/fetch.service';
 import { RegisterService } from 'src/app/services/register.service';
 
 @Component({
@@ -10,14 +11,23 @@ import { RegisterService } from 'src/app/services/register.service';
   styleUrls: ['./update-data.component.css']
 })
 export class UpdateDataComponent implements OnInit{
-  constructor(private router: Router, private updateServis: ChangeDataService, private registerServis: RegisterService){}
+  constructor(
+     private router: Router,
+     private updateServis: ChangeDataService, 
+     private registerServis: RegisterService,
+     private fetchServis: FetchService
+    ){}
   ngOnInit(): void {
     let temp = localStorage.getItem("profil")
     if(temp) this.curr_korime = temp
-    let kk = localStorage.getItem("korisnik")
-    if(kk){
-      this.k = JSON.parse(kk)
-    }
+    else return
+    this.fetchServis.user_by_korime(temp).subscribe(
+      user=>{
+        if(user){
+          this.k = user;
+        }
+      }
+    )
   }
 
   onFileSelected(event: any): void {

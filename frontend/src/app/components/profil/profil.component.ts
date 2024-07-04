@@ -21,8 +21,8 @@ export class ProfilComponent implements OnInit{
       this.fetchServis.user_by_korime(this.korime).subscribe(
         user=>{
           if(user){
-            console.log(user)
             this.k = user
+            this.fetched = true
           }
         }
       )
@@ -52,5 +52,6 @@ export class ProfilComponent implements OnInit{
   korime: string = ""
   tip: string = ""
   k: Korisnik = new Korisnik()
+  fetched: boolean = false;
 
 }
