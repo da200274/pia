@@ -112,6 +112,15 @@ export class UpdateController{
         })
     }
 
+    cancel_reservation = (req: express.Request, res: express.Response)=>{
+        let idR = req.body.id
+        RezervacijaM.deleteOne({_id: idR}).then((ok)=>{
+            res.json({poruka: "ok"})
+        }).catch((err)=>{
+            console.log(err)
+        })
+    }
+
     valid_reservation = (req: express.Request, res: express.Response)=>{
         let idR = req.body.id
         RezervacijaM.updateOne({_id: idR}, { status: 2}).then((ok)=>{

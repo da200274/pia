@@ -93,7 +93,13 @@ export class UpdateDataService {
     const data = {
       id: _id
     }
-    console.log(data)
     return this.http.post<Poruka>(`${this.backendUrl}/update/reject_reservation`, data);
+  }
+
+  cancel_reservation(_id: string){
+    const data = {
+      id: _id
+    }
+    return this.http.post<Poruka>(`${this.backendUrl}/update/cancel_reservation`, data);
   }
 }

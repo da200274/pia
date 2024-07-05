@@ -46,6 +46,9 @@ updateRouter.route("/reject_reservation").post(
 updateRouter.route("/accept_reservation").post(
     (req,res)=>new UpdateController().accept_reservation(req,res)
 )
+updateRouter.route("/cancel_reservation").post(
+    (req,res)=>new UpdateController().cancel_reservation(req,res)
+)
 
 updateRouter.route("/valid_reservation").post(
     (req,res)=>new UpdateController().valid_reservation(req,res)

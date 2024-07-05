@@ -22,13 +22,17 @@
                                                         <th>Naziv restorana</th>
                                                         <th>Datum</th>
                                                         <th>Adresa restorana</th>
+                                                        <th></th>
                                                       </tr>
                                                     </thead>
                                                     <tbody>
                                                         <tr *ngFor="let a of aktuelne_rezervacije">
                                                             <td>{{a.naziv_restorana}}</td>
-                                                            <td>{{a.datum_vreme_pocetka}}</td>
+                                                            <td>{{transform(a.datum_vreme_pocetka)}}</td>
                                                             <td>{{a.adresa}}</td>
+                                                            <td *ngIf="check_time(a.datum_vreme_pocetka)">
+                                                                <button class="btn btn-info" (click)="cancel(a._id)">Otkaži</button>
+                                                            </td>
                                                         </tr>
                                                     </tbody>
                                                 </table>

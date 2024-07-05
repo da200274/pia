@@ -3,14 +3,13 @@ generalno:
     prikaz recenzija kod restorana
 
 admin: 
-    odblokirati gosta nakon 3 nedolaska - stranica za blokirane korisnike?
     stolovi moraju da budu okrugli
 
 konobar:
     stolovi moraju da budu okrugli
+    produzavanje rezervacije
     histogram
     
 
 gost: 
-    otkazivanje rezervacije -> moze da se uradi na frontu provera
     kriptovana lozinka

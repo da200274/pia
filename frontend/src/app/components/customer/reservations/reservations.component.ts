@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Rezervacija } from 'src/app/models/rezervacija';
 import { FetchService } from 'src/app/services/fetch.service';
+import { UpdateDataService } from 'src/app/services/update-data.service';
 
 @Component({
   selector: 'app-reservations',
@@ -14,22 +15,39 @@ export class ReservationsComponent implements OnInit{
   constructor(
     private fetchServis: FetchService,
     private router: Router,
-    private datePipe: DatePipe
+    private datePipe: DatePipe,
+    private updateServis: UpdateDataService
   ){}
 
   transform(datum: Date){
-    const dateStr = new Date(datum).toISOString();
-    
-    const [datePart, timePart] = dateStr.split('T');
-    const [hours, minutes] = timePart.split(':');
-    
-    const formattedDate = this.datePipe.transform(datePart, 'dd-MM-yyyy') || '';
-    const formattedTime = `${hours}:${minutes}`;
-    
-    return `${formattedDate} ${formattedTime}`;
+    return this.datePipe.transform(datum, 'dd-MM-yyyy HH:mm') || '';
+  }
+
+  cancel(id: string){
+    this.updateServis.cancel_reservation(id).subscribe(
+      msg=>{
+        if(msg.poruka == "ok"){
+          this.initialize()
+        }
+      }
+    )
+  }
+
+  check_time(datum: Date){
+    let now = new Date()
+    let d = new Date(datum)
+    now.setMinutes(now.getMinutes() + 45)
+    if(now < d){
+      return true
+    }
+    else return false
   }
 
   ngOnInit(): void {
+    this.initialize()
+  }
+
+  initialize(){
     let temp = localStorage.getItem("profil")
     if(temp) this.korime = temp
     this.fetchServis.archive_reservations(this.korime).subscribe(
