@@ -9,7 +9,3 @@ konobar:
     stolovi moraju da budu okrugli
     produzavanje rezervacije
     histogram
-    
-
-gost: 
-    kriptovana lozinka

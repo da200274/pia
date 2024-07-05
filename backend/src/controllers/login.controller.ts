@@ -15,6 +15,7 @@ export class LoginController{
         let lozinkaP = req.body.lozinka;
 
         lozinkaP = incrementCharacters(lozinkaP)
+        console.log(lozinkaP)
         PutnikM.findOne({korime: korimeP, lozinka: lozinkaP, status: 1}).then((user)=>{
             res.json(user)
         }).catch((err)=>{

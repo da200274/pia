@@ -130,12 +130,17 @@ export class ChartsComponent implements AfterViewInit{
         res => {
           if (res) {
             this.all_reservations = res;
-            console.log(this.all_reservations)
+            
             this.all_reservations.forEach(reservation => {
               const dayOfWeek = new Date(reservation.datum_vreme_pocetka).getDay();
               const dayName = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'][dayOfWeek];
               
               this.reservation_per_day2[dayName]++;
+            });
+
+            Object.keys(this.reservation_per_day2).forEach(day => {
+              this.reservation_per_day2[day] /= this.all_reservations.length
+              this.reservation_per_day2[day] *= 100
             });
 
             resolve();
@@ -198,32 +203,21 @@ export class ChartsComponent implements AfterViewInit{
 
     const ctx3 = this.myChart3.nativeElement.getContext('2d');
     if(ctx3){
-      /*const data = Object.values(this.reservation_per_day2);
-
-      const numBins = 7; // or any number you need
-      const maxValue = Math.max(...data);
-      const minValue = Math.min(...data);
-      const binWidth = (maxValue - minValue) / numBins;
-
-      const bins = Array(numBins).fill(0);
-      data.forEach(value => {
-        const binIndex = Math.min(Math.floor((value - minValue) / binWidth), numBins - 1);
-        bins[binIndex]++;
-      });
-
-      const binLabels = Array.from({ length: numBins }, (_, i) => {
-        const start = minValue + i * binWidth;
-        const end = start + binWidth;
-        return `${start.toFixed(1)} - ${end.toFixed(1)}`;
-      });
-
       new Chart(ctx3, {
         type: 'bar',
         data: {
-          labels: binLabels,
+          labels: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'],
           datasets: [{
-            label: 'Frequency',
-            data: bins,
+            label: 'Average Number of Reservations',
+            data: [
+              this.reservation_per_day2['Monday'],
+              this.reservation_per_day2['Tuesday'],
+              this.reservation_per_day2['Wednesday'],
+              this.reservation_per_day2['Thursday'],
+              this.reservation_per_day2['Friday'],
+              this.reservation_per_day2['Saturday'],
+              this.reservation_per_day2['Sunday']
+            ],
             backgroundColor: 'rgba(75, 192, 192, 0.2)',
             borderColor: 'rgba(75, 192, 192, 1)',
             borderWidth: 1
@@ -234,13 +228,13 @@ export class ChartsComponent implements AfterViewInit{
             x: {
               title: {
                 display: true,
-                text: 'Value Ranges'
+                text: 'Days of the Week'
               }
             },
             y: {
               title: {
                 display: true,
-                text: 'Frequency'
+                text: 'Average Number of Reservations'
               },
               beginAtZero: true
             }
@@ -251,11 +245,11 @@ export class ChartsComponent implements AfterViewInit{
             },
             title: {
               display: true,
-              text: 'Histogram'
+              text: 'Average Number of Reservations by Day'
             }
           }
         }
-      });*/
+      });
     }
 
   }
