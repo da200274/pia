@@ -15,6 +15,10 @@ updateRouter.route("/ban").post(
     (req,res)=>new UpdateController().ban(req,res)
 )
 
+updateRouter.route("/unblock").post(
+    (req,res)=>new UpdateController().unblock(req,res)
+)
+
 updateRouter.route("/change_password").post(
     (req,res)=>new UpdateController().change_password(req,res)
 )

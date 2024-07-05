@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { Porudzbina } from '../models/porudzbina';
 import { Rezervacija } from '../models/rezervacija';
 import { Poruka } from '../models/poruka';
+import { Korisnik } from '../models/korisnik';
 
 @Injectable({
   providedIn: 'root'
@@ -28,6 +29,10 @@ export class FetchWaiterService {
     return this.http.post<Rezervacija[]>(`${this.backendUrl}/get_waiter/reservations_for_waiter`, data);
   }
 
+  all_reservations_2y(){
+    return this.http.post<Rezervacija[]>(`${this.backendUrl}/get/2y`, "");
+  }
+
   //not fetch but will work
 
   valid(id: string){
@@ -43,5 +48,19 @@ export class FetchWaiterService {
       korime: korime
     }
     return this.http.post<Poruka>(`${this.backendUrl}/update/invalid_reservation`, data);
+  }
+
+  waiters_of_restaurant(name: string){
+    const data = {
+      restoran: name
+    }
+    return this.http.post<Korisnik[]>(`${this.backendUrl}/get/all_waiters_from_restaurant`, data);
+  }
+
+  guests_for_waiter(name: string){
+    const data = {
+      korime: name
+    }
+    return this.http.post<number>(`${this.backendUrl}/get/guests_for_waiter`, data);
   }
 }

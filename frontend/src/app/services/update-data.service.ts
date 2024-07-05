@@ -31,6 +31,13 @@ export class UpdateDataService {
     return this.http.post<Poruka>(`${this.backendUrl}/update/ban`, data);
   }
 
+  unblock(korime: string){
+    const data = {
+      korime: korime
+    }
+    return this.http.post<Poruka>(`${this.backendUrl}/update/unblock`, data);
+  }
+
   change_password(korime: string, lozinka: string){
     const data = {
       korime: korime,

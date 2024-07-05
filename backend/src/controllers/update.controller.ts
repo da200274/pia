@@ -32,6 +32,15 @@ export class UpdateController{
         })
     }
 
+    unblock = (req: express.Request, res: express.Response)=>{
+        let korimeP = req.body.korime
+        KorisnikM.updateOne({korime: korimeP}, {status: 1, nedolazak: 0}).then((ok)=>{
+            res.json({poruka: "ok"})
+        }).catch((err)=>{
+            console.log(err)
+        })
+    }
+
     change_password = (req: express.Request, res: express.Response)=>{
         let korimeP = req.body.korime
         let lozinkaP = req.body.lozinka

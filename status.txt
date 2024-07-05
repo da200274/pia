@@ -2,7 +2,7 @@ korisnik:
 
 0 - poslat zahtev
 1 - odobren zahtev - korisnik
-2
+2 - banovan
 3 - admin
 4 - odbijen zahtev
 5 - blokiran

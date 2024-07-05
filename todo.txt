@@ -3,13 +3,12 @@ generalno:
     prikaz recenzija kod restorana
 
 admin: 
-    odblokirati gosta nakon 3 nedolaska
-    azuriranje podataka kod korisnika
+    odblokirati gosta nakon 3 nedolaska - stranica za blokirane korisnike?
     stolovi moraju da budu okrugli
 
 konobar:
     stolovi moraju da budu okrugli
-    statistika
+    histogram
     
 
 gost: 

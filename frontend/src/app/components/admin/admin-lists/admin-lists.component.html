@@ -28,8 +28,11 @@
                                             </td>
                                             <td>{{korisnik.korime}}</td>
                                             <td>{{korisnik.tip}}</td>
-                                            <td>
+                                            <td *ngIf="korisnik.status == 1">
                                                 <button (click)="show_more(korisnik.korime)" class="btn btn-block btn-info">Više</button>
+                                            </td>
+                                            <td *ngIf="korisnik.status == 5">
+                                                <button (click)="deblock(korisnik.korime)" class="btn btn-block btn-warning">Odblokiraj</button>
                                             </td>
                                         </tr>
                                     </tbody>

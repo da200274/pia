@@ -15,12 +15,24 @@ getRouter.route("/all_waiters").post(
     (req,res)=>new GetController().all_waiters(req,res)
 )
 
+getRouter.route("/all_waiters_from_restaurant").post(
+    (req,res)=>new GetController().all_waiters_from_restaurant(req,res)
+)
+
+getRouter.route("/guests_for_waiter").post(
+    (req,res)=>new GetController().guests_for_waiter(req,res)
+)
+
 getRouter.route("/user_by_korime").post(
     (req,res)=>new GetController().user_by_korime(req,res)
 )
 
 getRouter.route("/all_restaurants").post(
     (req,res)=>new GetController().all_restaurants(req,res)
+)
+
+getRouter.route("/2y").post(
+    (req,res)=>new GetController().all_reservations(req,res)
 )
 
 getRouter.route("/get_restaurant").post(

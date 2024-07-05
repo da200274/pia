@@ -100,8 +100,7 @@ export class AddWaiterComponent {
     this.registerServis.update_photo(naziv, this.korime).subscribe(
       data=>{
         if(data.poruka == "ok"){
-          console.log("Uspešna registracija.");
-          this.router.navigate(['login'])
+          this.router.navigate(['profil'])
         }
         else{
           this.message = "Neuspešno ažuriranje slike!";

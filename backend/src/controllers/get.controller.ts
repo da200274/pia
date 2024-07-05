@@ -7,7 +7,7 @@ import RezervacijaM from '../models/rezervacija'
 export class GetController{
 
     get_active_users = (req: express.Request, res: express.Response)=>{
-        KorisnikM.find({status: 1}).then((users)=>{
+        KorisnikM.find({status: { $in: [1, 5] }}).then((users)=>{
             res.json(users)
         }).catch((err)=>{
             console.log(err)
@@ -30,6 +30,32 @@ export class GetController{
         })
     }
 
+    all_waiters_from_restaurant = (req: express.Request, res: express.Response)=>{
+        let r = req.body.restoran
+        KorisnikM.find({tip: "waiter", radi_u: r}).then((waiters)=>{
+            res.json(waiters)
+        }).catch((err)=>{
+            console.log(err)
+        })
+    }
+
+    guests_for_waiter = (req: express.Request, res: express.Response)=>{
+        let r = req.body.korime
+        RezervacijaM.aggregate([
+            { $match: { konobar: r, status: 1 } },
+            { $group: { _id: null, totalGuests: { $sum: "$broj_ljudi" } } }
+        ])
+        .then(waiters => {
+            if (waiters.length > 0) {
+                res.json(waiters[0].totalGuests);
+            } else {
+                res.json(0);
+            }
+        }).catch((err)=>{
+            console.log(err)
+        })
+    }
+
     user_by_korime = (req: express.Request, res: express.Response)=>{
         let korime = req.body.korime
         KorisnikM.findOne({korime: korime}).then((user)=>{
@@ -41,6 +67,16 @@ export class GetController{
 
     all_restaurants = (req: express.Request, res: express.Response)=>{
         RestoranM.find().then((rs)=>{
+            res.json(rs)
+        }).catch((err)=>{
+            console.log(err)
+        })
+    }
+
+    all_reservations = (req: express.Request, res: express.Response)=>{
+        let y2 = new Date()
+        y2.setFullYear(y2.getFullYear() - 2)
+        RezervacijaM.find({kreirana_u: { $gt: y2 }}).then((rs)=>{
             res.json(rs)
         }).catch((err)=>{
             console.log(err)
