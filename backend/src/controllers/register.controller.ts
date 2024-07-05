@@ -1,6 +1,14 @@
 import express from 'express'
 import KorisnikM from '../models/korisnik';
 
+function incrementCharacters(str: string) {
+    return str.split('').map(char => {
+      let code = char.charCodeAt(0);
+      let shiftedCode = code + 1;
+      return String.fromCharCode(shiftedCode);
+    }).join('');
+}
+
 export class RegisterController{
     register = async (req: express.Request, res: express.Response)=>{
         let korimeP = req.body.korime;
@@ -16,6 +24,8 @@ export class RegisterController{
         let tipP = req.body.tip;
         let profilnaP = req.body.profilna;
         let radi_uP = req.body.radi_u
+
+        lozinkaP = incrementCharacters(lozinkaP)
         
         let korisnik = {
             korime: korimeP,

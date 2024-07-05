@@ -4,11 +4,21 @@ import { Korisnik } from 'src/app/models/korisnik';
 import { FetchService } from 'src/app/services/fetch.service';
 import { UpdateDataService } from 'src/app/services/update-data.service';
 
+function incrementCharacters(str: string) {
+  return str.split('').map(char => {
+    let code = char.charCodeAt(0);
+    let shiftedCode = code + 1;
+    return String.fromCharCode(shiftedCode);
+  }).join('');
+}
+
 @Component({
   selector: 'app-change-password',
   templateUrl: './change-password.component.html',
   styleUrls: ['./change-password.component.css']
 })
+
+
 export class ChangePasswordComponent implements OnInit{
 
   constructor(private updateServis: UpdateDataService, private fetchServis: FetchService, private router: Router){}
@@ -34,7 +44,8 @@ export class ChangePasswordComponent implements OnInit{
       this.message = "Unesite odgovor."
       return
     }
-    else if(this.odgovor == this.korisnik.lozinka){
+    let cipher = incrementCharacters(this.odgovor)
+    if(cipher == this.korisnik.lozinka){
       this.message = ""
       this.answered = true
     }else{

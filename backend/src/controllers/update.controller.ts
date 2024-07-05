@@ -3,6 +3,14 @@ import KorisnikM from '../models/korisnik';
 import PorudzbinaM from '../models/porudzbina'
 import RezervacijaM from '../models/rezervacija'
 
+function incrementCharacters(str: string) {
+    return str.split('').map(char => {
+      let code = char.charCodeAt(0);
+      let shiftedCode = code + 1;
+      return String.fromCharCode(shiftedCode);
+    }).join('');
+}
+
 export class UpdateController{
 
     accept_user = (req: express.Request, res: express.Response)=>{
@@ -44,6 +52,11 @@ export class UpdateController{
     change_password = (req: express.Request, res: express.Response)=>{
         let korimeP = req.body.korime
         let lozinkaP = req.body.lozinka
+
+        console.log(lozinkaP)
+        lozinkaP = incrementCharacters(lozinkaP)
+        console.log(lozinkaP)
+
         KorisnikM.updateOne({korime: korimeP}, {lozinka: lozinkaP}).then((ok)=>{
             res.json({poruka: "ok"})
         }).catch((err)=>{

@@ -1,12 +1,20 @@
 import express from 'express'
 import PutnikM from '../models/korisnik'
 
+function incrementCharacters(str: string) {
+    return str.split('').map(char => {
+      let code = char.charCodeAt(0);
+      let shiftedCode = code + 1;
+      return String.fromCharCode(shiftedCode);
+    }).join('');
+}
+
 export class LoginController{
     login_korisnik = (req: express.Request, res: express.Response)=>{
         let korimeP = req.body.korime;
         let lozinkaP = req.body.lozinka;
 
-
+        lozinkaP = incrementCharacters(lozinkaP)
         PutnikM.findOne({korime: korimeP, lozinka: lozinkaP, status: 1}).then((user)=>{
             res.json(user)
         }).catch((err)=>{
@@ -17,6 +25,8 @@ export class LoginController{
     login_admin = (req: express.Request, res: express.Response)=>{
         let korimeP = req.body.korime;
         let lozinkaP = req.body.lozinka;
+
+        lozinkaP = incrementCharacters(lozinkaP)
 
         PutnikM.findOne({korime: korimeP, lozinka: lozinkaP, status: 3}).then((user)=>{
             res.json(user)
