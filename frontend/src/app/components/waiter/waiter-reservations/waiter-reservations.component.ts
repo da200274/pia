@@ -139,6 +139,10 @@ export class WaiterReservationsComponent implements OnInit{
   }
 
   accept() {
+    if(this.sto_selected == ""){
+      alert("Selektujte sto!")
+      return
+    }
     this.updateServis.accept_reservation(this.korisnik.korime, this.aktuelne_rezervacije[this.vise_index]._id, this.sto_selected).subscribe(
       msg => {
         this.show_more = false

@@ -11,4 +11,5 @@ export class Rezervacija{
     broj_ljudi: number = 0;
     komentar: string = ""
     ocena: number = 0
+    ekstenzija: boolean = false
 }

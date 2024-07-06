@@ -43,6 +43,40 @@
                                         </div>
                                     </div>
                                 </div>
+                                <div class="row">
+                                    <div class="col">
+                                        <div class="card bg-secondary shadow-soft border-light p-4">
+                                            <div class="text-center pb-0">
+                                                <h2 class="mb-0 h5">Trenutno u restoranu</h2>
+                                            </div>
+                                            <br>
+                                            <div class="row">
+                                                <table class="table table-striped">
+                                                    <thead class="thead-dark">
+                                                      <tr>
+                                                        <th>Gost</th>
+                                                        <th>Broj ljudi</th>
+                                                        <th>Sto</th>
+                                                        <th>Vreme kraja</th>
+                                                        <th></th>
+                                                      </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                        <tr *ngFor="let b of trenutne_rezervacije; let j = index">
+                                                            <td>{{b.gost}}</td>
+                                                            <td>{{b.broj_ljudi}}</td>
+                                                            <td>{{b.sto_id}}</td>
+                                                            <td>{{transform(b.datum_vreme_kraja)}}</td>
+                                                            <td *ngIf="b.ekstenzija == false">
+                                                                <button class="btn btn-info" (click)="extend(j)">Produži</button>
+                                                            </td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                         </section>
                     </div>

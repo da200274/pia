@@ -40,6 +40,29 @@ export class UpdateController{
         })
     }
 
+    extend = (req: express.Request, res: express.Response)=>{
+        let idR = req.body.id
+        let vreme = req.body.kraj;
+        let sto = req.body.sto
+        let vremeKraj = new Date(vreme)
+
+        vremeKraj.setHours(vremeKraj.getHours() + 1)
+        RezervacijaM.findOne({sto_id: sto, datum_vreme_pocetka: {$lt: vremeKraj}, status: 1}).then((rez)=>{
+            if(rez){
+                res.json({poruka: "not ok"})
+            }
+            else{
+                console.log("usao")
+                RezervacijaM.updateOne({_id: idR}, {datum_vreme_kraja: vremeKraj, ekstenzija: true}).then((ok)=>{
+                    res.json({poruka: "ok"})
+                })
+            }
+        }).catch((err) => {
+            console.error(err);
+            res.status(500).json({ error: 'An error occurred' });
+        });
+    }
+
     unblock = (req: express.Request, res: express.Response)=>{
         let korimeP = req.body.korime
         KorisnikM.updateOne({korime: korimeP}, {status: 1, nedolazak: 0}).then((ok)=>{

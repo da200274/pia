@@ -29,6 +29,13 @@ export class FetchWaiterService {
     return this.http.post<Rezervacija[]>(`${this.backendUrl}/get_waiter/reservations_for_waiter`, data);
   }
 
+  current_reservations(naziv: string){
+    const data = {
+      konobar: naziv
+    }
+    return this.http.post<Rezervacija[]>(`${this.backendUrl}/get_waiter/current_reservation`, data);
+  }
+
   all_reservations_2y(){
     return this.http.post<Rezervacija[]>(`${this.backendUrl}/get/2y`, "");
   }

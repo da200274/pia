@@ -11,4 +11,8 @@ getWaiterRouter.route("/reservations_for_waiter").post(
     (req,res)=>new GetWaiterController().reservations_for_waiter(req,res)
 )
 
+getWaiterRouter.route("/current_reservation").post(
+    (req,res)=>new GetWaiterController().current_reservation(req,res)
+)
+
 export default getWaiterRouter;

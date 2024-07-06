@@ -46,6 +46,7 @@ export class InsertController{
         let sto_id = ""
         let ocena = 0
         let datum_vreme_kraja = new Date(datum_vreme_pocetka)
+        let ekstenzija = false;
         datum_vreme_kraja.setHours(datum_vreme_kraja.getHours() + 3)
         
         const rezervacija = new RezervacijaM({
@@ -59,7 +60,8 @@ export class InsertController{
             adresa,
             broj_ljudi,
             komentar,
-            ocena
+            ocena,
+            ekstenzija
         });
 
         new RezervacijaM(rezervacija).save().then(ok=>{

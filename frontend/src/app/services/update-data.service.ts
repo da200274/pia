@@ -102,4 +102,13 @@ export class UpdateDataService {
     }
     return this.http.post<Poruka>(`${this.backendUrl}/update/cancel_reservation`, data);
   }
+
+  extend(_id: string, vreme_kraj: Date, sto: string){
+    const data = {
+      id: _id,
+      kraj: vreme_kraj,
+      sto: sto
+    }
+    return this.http.post<Poruka>(`${this.backendUrl}/update/extend`, data);
+  }
 }

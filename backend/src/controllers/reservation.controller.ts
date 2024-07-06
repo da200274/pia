@@ -14,7 +14,7 @@ export class ReserveController{
 
         RezervacijaM.find({ 
             naziv_restorana: ime, 
-            status: 1,
+            status: { $in: [1, 2] },
             datum_vreme_pocetka: { $lte: vreme_end },
             datum_vreme_kraja: { $gte: vreme_start }
         }).then((reservations)=>{

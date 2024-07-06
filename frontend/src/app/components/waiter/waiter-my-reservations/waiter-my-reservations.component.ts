@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { Korisnik } from 'src/app/models/korisnik';
 import { Rezervacija } from 'src/app/models/rezervacija';
 import { FetchWaiterService } from 'src/app/services/fetch-waiter.service';
+import { UpdateDataService } from 'src/app/services/update-data.service';
 
 @Component({
   selector: 'app-waiter-my-reservations',
@@ -13,6 +14,7 @@ export class WaiterMyReservationsComponent implements OnInit{
 
   constructor(
     private fetchServis: FetchWaiterService,
+    private updateServis: UpdateDataService,
     private datePipe: DatePipe
   ){}
 
@@ -31,6 +33,12 @@ export class WaiterMyReservationsComponent implements OnInit{
       res => {
         if (res) this.aktuelne_rezervacije = res;
         this.now.setMinutes(this.now.getMinutes() - 30)
+        this.fetchServis.current_reservations(this.korisnik.korime).subscribe(
+          res2=>{
+            if(res2) this.trenutne_rezervacije = res2
+            console.log(res2)
+          }
+        )
       }
     );
   }
@@ -62,11 +70,33 @@ export class WaiterMyReservationsComponent implements OnInit{
     )
   }
 
+  extend(i: number){
+    this.updateServis.extend(this.trenutne_rezervacije[i]._id, this.trenutne_rezervacije[i].datum_vreme_kraja, this.trenutne_rezervacije[i].sto_id,).subscribe(
+      msg=>{
+        if(msg.poruka == "ok"){
+          this.inicijalizuj()
+        }
+        else{
+          alert("Nije uspela ekstenzija vremena")
+        }
+      }
+    )
+  }
+
   transform(datum: Date){
-    return this.datePipe.transform(datum, 'dd-MM-yyyy HH:mm') || '';
+    const dateStr = new Date(datum).toISOString();
+    
+    const [datePart, timePart] = dateStr.split('T');
+    const [hours, minutes] = timePart.split(':');
+    
+    const formattedDate = this.datePipe.transform(datePart, 'dd-MM-yyyy') || '';
+    const formattedTime = `${hours}:${minutes}`;
+    
+    return `${formattedDate} ${formattedTime}`;
   }
   
   aktuelne_rezervacije: Rezervacija[] = []
+  trenutne_rezervacije: Rezervacija[] = []
   korisnik: Korisnik = new Korisnik()
   now: Date = new Date()
 }

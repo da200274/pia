@@ -2,10 +2,3 @@ generalno:
     generisati podatke za sve modele koje imamo
     prikaz recenzija kod restorana
 
-admin: 
-    stolovi moraju da budu okrugli
-
-konobar:
-    stolovi moraju da budu okrugli
-    produzavanje rezervacije
-    histogram

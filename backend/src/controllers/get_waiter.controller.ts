@@ -24,4 +24,16 @@ export class GetWaiterController{
         })
     }
 
+    current_reservation = (req: express.Request, res: express.Response)=>{
+        let konobar = req.body.konobar
+        let now = new Date()
+        
+        RezervacijaM.find({konobar: konobar, status: 2, datum_vreme_kraja: { $gte: now }})
+        .then((reservations)=>{
+            res.json(reservations)
+        }).catch((err)=>{
+            console.log(err)
+        })
+    }
+
 }
